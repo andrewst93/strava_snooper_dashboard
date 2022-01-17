@@ -10,6 +10,8 @@ To ensure the requirements.txt is updated in the format expected by App Engine u
 
 `pip list --format=freeze > requirements.txt`
 
+On windows PyWin32 is used but is not included in the requirements due to it breaking the App Engine deployment. The version used is `pywin32==303`.
+
 # Dashboard Performance
 
 Majority of the visualizations are fed by preprocessed data and prediction/evaluation metrics. This was initially setup to run real time but with on demand loading of the page on the free tier of App Engine meant it would load much too slow.
