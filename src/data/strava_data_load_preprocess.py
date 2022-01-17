@@ -12,7 +12,7 @@ import lightgbm as lgbm
 
 def load_strava_activity_data(data_file_path):
     raw_files_dict = {}
-    for f in glob.glob(os.path.join(data_file_path, "*ProcessedStravaData*.csv")):
+    for f in glob.glob(os.path.join(data_file_path,"processed",  "*ProcessedStravaData*.csv")):
         user = os.path.basename(f).split('_')[0]
         print(f'{user} Data Found')
         # raw_files_dict[user] = preprocess_strava_df(pd.read_csv(f))
@@ -38,13 +38,13 @@ def preprocess_strava_df(raw_df, min_act_length=1200, max_act_dist=400, export=F
     processed_df['distance_raw_km'] = (processed_df['distance_raw']/1000)
 
     if export == True:
-        processed_df.to_csv(r"data\ProcessedStravaData.csv")
+        processed_df.to_csv(r"data\processed\ProcessedStravaData.csv")
 
     return processed_df
 
 def load_employment_model_data():
 
-    model_data_file_path = os.path.abspath(os.path.join(os.getcwd(), 'data'))
+    model_data_file_path = os.path.abspath(os.path.join(os.getcwd(), 'data', 'processed'))
     print('Loading Employment Model Data: ' + model_data_file_path)
     start = time.process_time()
 
@@ -77,7 +77,7 @@ def load_week_start_times_data():
 
     print('Loading Weekly Employment Summary Data: ')
 
-    week_data = os.path.join(os.getcwd(), 'data', "yearly_week_start_times.json")
+    week_data = os.path.join(os.getcwd(), 'data', 'processed', "yearly_week_start_times.json")
 
     yearly_week_summary_data = json.load(open(week_data, "r"))
 
@@ -100,9 +100,9 @@ def load_logreg_model_results(data_set):
     print('Loading ' + data_set + ' LogReg Model Results: ')
 
     if data_set == 'test':
-        logreg_results = pd.read_csv( glob.glob(os.path.join(os.getcwd(),'data', "test_logreg_model*.csv"))[0])
+        logreg_results = pd.read_csv( glob.glob(os.path.join(os.getcwd(),'data', 'processed', "test_logreg_model*.csv"))[0])
     elif data_set == 'train':
-        logreg_results = pd.read_csv( glob.glob(os.path.join(os.getcwd(),'data', "train_logreg_model*.csv"))[0])
+        logreg_results = pd.read_csv( glob.glob(os.path.join(os.getcwd(),'data', 'processed', "train_logreg_model*.csv"))[0])
 
     return logreg_results
 
@@ -111,21 +111,21 @@ def load_lgbm_model_results(data_set):
     print('Loading ' + data_set + ' LogReg Model Results: ')
 
     if data_set == 'test':
-        lgbm_results = pd.read_csv( glob.glob(os.path.join(os.getcwd(),'data', "test_lgbm_model*.csv"))[0])
+        lgbm_results = pd.read_csv( glob.glob(os.path.join(os.getcwd(),'data', 'processed', "test_lgbm_model*.csv"))[0])
     elif data_set == 'train':
-        lgbm_results = pd.read_csv( glob.glob(os.path.join(os.getcwd(),'data', "train_lgbm_model*.csv"))[0])
+        lgbm_results = pd.read_csv( glob.glob(os.path.join(os.getcwd(),'data', 'processed', "train_lgbm_model*.csv"))[0])
 
     return lgbm_results
 
 def load_lgbm_heatmap(data_set):
 
-    lgbm_heatmap = pd.read_csv(glob.glob(os.path.join(os.getcwd(),'data', data_set + "_lgbm_model_heatmap*.csv"))[0])
+    lgbm_heatmap = pd.read_csv(glob.glob(os.path.join(os.getcwd(),'data','processed', data_set + "_lgbm_model_heatmap*.csv"))[0])
 
     return lgbm_heatmap
 
 def load_logreg_heatmap(data_set):
 
-    logreg_heatmap = pd.read_csv(glob.glob(os.path.join(os.getcwd(),'data', data_set + "_logreg_model_heatmap*.csv"))[0])
+    logreg_heatmap = pd.read_csv(glob.glob(os.path.join(os.getcwd(),'data','processed', data_set + "_logreg_model_heatmap*.csv"))[0])
 
     return logreg_heatmap
 
