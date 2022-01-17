@@ -15,8 +15,10 @@
 
 # Python pycache:
 __pycache__/
+*.vscode/
 # Ignored by the build system
 /setup.cfg
 
 #ignore notebook files
 *.ipynb
+*.env
