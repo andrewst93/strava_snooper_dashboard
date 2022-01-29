@@ -26,7 +26,7 @@ def get_latest_request_date():
         [unix timestamp]: The number of milliseconds that have passed since January 1, 1970 00:00:00 (UTC)
     """
 
-    client = bigquery.Client(project="stavasnooper")
+    client = bigquery.Client(project="stravasnooper-dev")
     dataset_ref = client.dataset(DATASET_ID)
     table_ref = dataset_ref.table(TABLE_ID)
 
