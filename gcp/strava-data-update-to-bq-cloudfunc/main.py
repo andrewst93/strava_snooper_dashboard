@@ -31,7 +31,7 @@ def get_latest_request_date():
     table_ref = dataset_ref.table(TABLE_ID)
 
     max_request_date_query = """SELECT MAX(processed_timestamp) AS most_recent_processing
-    FROM `stavasnooper.{0}.{1}` LIMIT 1000""".format(
+    FROM `stravasnooper-dev.{0}.{1}` LIMIT 1000""".format(
         DATASET_ID, TABLE_ID
     )
 
@@ -146,7 +146,7 @@ def load_strava_data_into_bq(df):
         df (DataFrame): Cleaned & pre-processed Strava data returned from clean_raw_strava_data
     """
 
-    client = bigquery.Client(project="stavasnooper")
+    client = bigquery.Client(project="stravasnooper-dev")
 
     dataset_ref = client.dataset(DATASET_ID)
     table_ref = dataset_ref.table(TABLE_ID)
