@@ -59,7 +59,7 @@ raw_files_dict = load_strava_activity_data_from_bq()
 num_activities = len(raw_files_dict["TyAndrews"].type)
 
 activity_over_time = plot_eda_data(
-    raw_files_dict["TyAndrews"], [2013, 2021], "distance_raw_km", "Month"
+    raw_files_dict["TyAndrews"], [2013, 2023], "distance_raw_km", "Month"
 )
 
 css_file = r"assets\dash_bootstrap_united.css"
@@ -247,7 +247,7 @@ activity_controls = html.Div(
                     min=2013,
                     max=2022,
                     step=1,
-                    value=[2013, 2022],
+                    value=[2013, 2023],
                     marks={
                         2013: "2013",
                         2014: "'14",
@@ -258,7 +258,8 @@ activity_controls = html.Div(
                         2019: "'19",
                         2020: "'20",
                         2021: "'21",
-                        2022: "2022",
+                        2022: "'22",
+                        2023: "2023",
                     },
                 ),
             ]
