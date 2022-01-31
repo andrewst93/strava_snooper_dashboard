@@ -1,5 +1,6 @@
 import os
 import time
+import sys
 
 import dash
 import dash_core_components as dcc
@@ -16,6 +17,8 @@ from sklearn.cluster import KMeans
 src_path = os.path.abspath(os.path.join(".."))
 if src_path not in sys.path:
     sys.path.append(src_path)
+
+from src.data.gcp_strava_data_load_preprocess import load_strava_activity_data_from_bq
 
 from src.data.strava_data_load_preprocess import (
     load_strava_activity_data,
@@ -45,21 +48,18 @@ work_hours = [[9, 11], [13, 16]]
 
 # ------------ END CONSTANTS -----------------------------#
 
-iris_raw = datasets.load_iris()
-iris = pd.DataFrame(iris_raw["data"], columns=iris_raw["feature_names"])
+# for real time running on GCP App engine pull data from BQ
+raw_files_dict = load_strava_activity_data_from_bq()
 
-# Load sample data
-data_file_path = os.path.abspath(os.path.join(os.getcwd(), "data"))
-print("Loading Strava Data: " + data_file_path)
-start = time.process_time()
-raw_files_dict = load_strava_activity_data(data_file_path)
-
-print(f"\tTook {time.process_time()- start:.2f}s")
+# Use following code to test with sample data locally
+# data_file_path = os.path.abspath(os.path.join(os.getcwd(), "data"))
+# print("Loading Strava Data: " + data_file_path)
+# # raw_files_dict = load_strava_activity_data(data_file_path)
 
 num_activities = len(raw_files_dict["TyAndrews"].type)
 
 activity_over_time = plot_eda_data(
-    raw_files_dict["TyAndrews"], [2013, 2021], "distance", "Month"
+    raw_files_dict["TyAndrews"], [2013, 2021], "distance_raw_km", "Month"
 )
 
 css_file = r"assets\dash_bootstrap_united.css"
@@ -679,20 +679,6 @@ def make_graph(x, y, n_clusters):
 
     return go.Figure(data=data, layout=layout)
 
-
-# make sure that x and y values can't be the same variable
-def filter_options(v):
-    """Disable option v"""
-    return [{"label": col, "value": col, "disabled": col == v} for col in iris.columns]
-
-
-# functionality is the same for both dropdowns, so we reuse filter_options
-app.callback(Output("x-variable", "options"), [Input("y-variable", "value")])(
-    filter_options
-)
-app.callback(Output("y-variable", "options"), [Input("x-variable", "value")])(
-    filter_options
-)
 
 if __name__ == "__main__":
     app.run_server(debug=True)
