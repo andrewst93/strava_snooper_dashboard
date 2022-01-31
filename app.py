@@ -46,7 +46,7 @@ except ImportError:
 # What's the definition of "work hours", activities are grouped down 9-11 is any activities started 9:00 - 11:59
 work_hours = [[9, 11], [13, 16]]
 
-GCP_PROJECT_ID = os.getenv("GCP_PROJECT_ID")
+GCP_PROJECT_ID = "stravasnooper-dev"
 
 # ------------ END CONSTANTS -----------------------------#
 
