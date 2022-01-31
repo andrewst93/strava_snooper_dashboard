@@ -171,7 +171,13 @@ data_intro_card = dbc.Card(
                     dbc.Col(
                         dbc.Card(
                             dbc.CardBody(
-                                dcc.Graph(id="eda-plot", figure=activity_over_time)
+                                dcc.Loading(
+                                    children=dcc.Graph(
+                                        id="eda-plot", figure=activity_over_time
+                                    ),
+                                    type="cube",
+                                    color="#e95420",
+                                )
                             )
                         ),
                         width=9,
