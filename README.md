@@ -35,3 +35,9 @@ To deploy run the following command from within the repo:
 Following deployment you should be able to view the dashboard hosted on GCP by navigating to https://[YOUR GCP PROJECT NAME}.appspot.com or running the following command:
 
 `gcloud app browse`
+
+The repo is stored in GCP Cloud Source Repositories to help deal with cloud function deployment issues.
+
+To push changes follow the setup guide form google for authentication here, SDK auth was simplest: [Setting up local authentication](https://cloud.google.com/source-repositories/docs/authentication#windows_1)
+
+Issues with credential storing were an issue which were resolved from [this SOF](https://stackoverflow.com/questions/49473897/git-push-cloud-showing-invalid-authentication-credentials-error) page, the command `git config credential.helper gcloud.cmd` resolved git remote credential issues of incorrect authentication.
