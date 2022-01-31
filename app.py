@@ -48,9 +48,6 @@ work_hours = [[9, 11], [13, 16]]
 
 # ------------ END CONSTANTS -----------------------------#
 
-iris_raw = datasets.load_iris()
-iris = pd.DataFrame(iris_raw["data"], columns=iris_raw["feature_names"])
-
 # for real time running on GCP App engine pull data from BQ
 raw_files_dict = load_strava_activity_data_from_bq()
 
@@ -682,20 +679,6 @@ def make_graph(x, y, n_clusters):
 
     return go.Figure(data=data, layout=layout)
 
-
-# make sure that x and y values can't be the same variable
-def filter_options(v):
-    """Disable option v"""
-    return [{"label": col, "value": col, "disabled": col == v} for col in iris.columns]
-
-
-# functionality is the same for both dropdowns, so we reuse filter_options
-app.callback(Output("x-variable", "options"), [Input("y-variable", "value")])(
-    filter_options
-)
-app.callback(Output("y-variable", "options"), [Input("x-variable", "value")])(
-    filter_options
-)
 
 if __name__ == "__main__":
     app.run_server(debug=True)
