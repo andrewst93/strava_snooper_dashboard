@@ -18,6 +18,8 @@ src_path = os.path.abspath(os.path.join(".."))
 if src_path not in sys.path:
     sys.path.append(src_path)
 
+from src.data.gcp_strava_data_load_preprocess import load_strava_activity_data_from_bq
+
 from src.data.strava_data_load_preprocess import (
     load_strava_activity_data,
     load_employment_model_data,
@@ -44,6 +46,8 @@ except ImportError:
 # What's the definition of "work hours", activities are grouped down 9-11 is any activities started 9:00 - 11:59
 work_hours = [[9, 11], [13, 16]]
 
+GCP_PROJECT_ID = os.getenv("GCP_PROJECT_ID")
+
 # ------------ END CONSTANTS -----------------------------#
 
 iris_raw = datasets.load_iris()
@@ -53,7 +57,9 @@ iris = pd.DataFrame(iris_raw["data"], columns=iris_raw["feature_names"])
 data_file_path = os.path.abspath(os.path.join(os.getcwd(), "data"))
 print("Loading Strava Data: " + data_file_path)
 start = time.process_time()
+
 raw_files_dict = load_strava_activity_data(data_file_path)
+raw_files_dict = load_strava_activity_data_from_bq(GCP_PROJECT_ID)
 
 print(f"\tTook {time.process_time()- start:.2f}s")
 
