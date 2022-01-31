@@ -14,6 +14,7 @@ from google.cloud import bigquery
 def load_strava_activity_data_from_bq(GCP_PROJECT_ID, users=["TyAndrews"]):
 
     start_time = time.time()
+
     raw_files_dict = {}
     for user in users:
 
@@ -36,7 +37,7 @@ def load_strava_activity_data_from_bq(GCP_PROJECT_ID, users=["TyAndrews"]):
         raw_files_dict[user] = bqclient.query(strava_data_query).result().to_dataframe()
 
         print(
-            f"load_strava_activity_data: Took {time.time() - start_time: %.2f}s to get BQ data"
+            f"load_strava_activity_data: Took {time.time() - start_time: .2f}s to get BQ data"
         )
 
     return raw_files_dict
