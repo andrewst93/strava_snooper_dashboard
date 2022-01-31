@@ -11,7 +11,7 @@ import lightgbm as lgbm
 from google.cloud import bigquery
 
 
-def load_strava_activity_data_from_bq(GCP_PROJECT_ID, users=["TyAndrews"]):
+def load_strava_activity_data_from_bq(users=["TyAndrews"]):
 
     start_time = time.time()
 
@@ -19,7 +19,7 @@ def load_strava_activity_data_from_bq(GCP_PROJECT_ID, users=["TyAndrews"]):
     for user in users:
 
         print(f"{user} Data Found")
-        bqclient = bigquery.Client(project=GCP_PROJECT_ID)
+        bqclient = bigquery.Client()
 
         strava_data_query = """
             SELECT 
@@ -31,7 +31,7 @@ def load_strava_activity_data_from_bq(GCP_PROJECT_ID, users=["TyAndrews"]):
                 moving_time_hrs AS moving_time_raw_hrs,
                 total_elevation_gain AS elevation_gain
             FROM `{0}.prod_dashboard.raw_strava_data` LIMIT 5000""".format(
-            GCP_PROJECT_ID
+            bqclient.project
         )
 
         raw_files_dict[user] = bqclient.query(strava_data_query).result().to_dataframe()

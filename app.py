@@ -46,22 +46,18 @@ except ImportError:
 # What's the definition of "work hours", activities are grouped down 9-11 is any activities started 9:00 - 11:59
 work_hours = [[9, 11], [13, 16]]
 
-GCP_PROJECT_ID = "stravasnooper-dev"
-
 # ------------ END CONSTANTS -----------------------------#
 
 iris_raw = datasets.load_iris()
 iris = pd.DataFrame(iris_raw["data"], columns=iris_raw["feature_names"])
 
-# Load sample data
-data_file_path = os.path.abspath(os.path.join(os.getcwd(), "data"))
-print("Loading Strava Data: " + data_file_path)
-start = time.process_time()
+# for real time running on GCP App engine pull data from BQ
+raw_files_dict = load_strava_activity_data_from_bq()
 
-# raw_files_dict = load_strava_activity_data(data_file_path)
-raw_files_dict = load_strava_activity_data_from_bq(GCP_PROJECT_ID)
-
-print(f"\tTook {time.process_time()- start:.2f}s")
+# Use following code to test with sample data locally
+# data_file_path = os.path.abspath(os.path.join(os.getcwd(), "data"))
+# print("Loading Strava Data: " + data_file_path)
+# # raw_files_dict = load_strava_activity_data(data_file_path)
 
 num_activities = len(raw_files_dict["TyAndrews"].type)
 
