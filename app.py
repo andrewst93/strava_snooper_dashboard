@@ -66,7 +66,7 @@ print(f"\tTook {time.process_time()- start:.2f}s")
 num_activities = len(raw_files_dict["TyAndrews"].type)
 
 activity_over_time = plot_eda_data(
-    raw_files_dict["TyAndrews"], [2013, 2021], "distance", "Month"
+    raw_files_dict["TyAndrews"], [2013, 2021], "distance_raw_km", "Month"
 )
 
 css_file = r"assets\dash_bootstrap_united.css"
