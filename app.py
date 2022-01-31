@@ -58,7 +58,7 @@ data_file_path = os.path.abspath(os.path.join(os.getcwd(), "data"))
 print("Loading Strava Data: " + data_file_path)
 start = time.process_time()
 
-raw_files_dict = load_strava_activity_data(data_file_path)
+# raw_files_dict = load_strava_activity_data(data_file_path)
 raw_files_dict = load_strava_activity_data_from_bq(GCP_PROJECT_ID)
 
 print(f"\tTook {time.process_time()- start:.2f}s")
