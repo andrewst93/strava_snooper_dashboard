@@ -245,7 +245,7 @@ activity_controls = html.Div(
                 dcc.RangeSlider(
                     id="year-selector",
                     min=2013,
-                    max=2022,
+                    max=2023,
                     step=1,
                     value=[2013, 2023],
                     marks={
