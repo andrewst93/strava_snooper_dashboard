@@ -163,7 +163,7 @@ activity_controls = html.Div(
 # DCC card for showing my activitees over time etc.
 data_intro_card = dbc.Card(
     [
-        dbc.CardHeader(html.H4("My Strava Data")),
+        dbc.CardHeader(html.H4("Explore My Strava Data")),
         dbc.CardBody(
             dbc.Row(
                 [

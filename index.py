@@ -8,7 +8,7 @@ from dash.dependencies import Input, Output
 # if src_path not in sys.path:
 #     sys.path.append(src_path)
 
-from app import app
+from app import app, server
 from pages import homepage, page2, layouts
 
 app.layout = html.Div(

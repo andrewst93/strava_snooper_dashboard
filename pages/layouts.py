@@ -11,9 +11,12 @@ STRAVASNOOPER_LOGO = "/assets/images/strava_snooper_wide_logo.png"
 contact_button = dbc.Button(
     "CONTACT ME",
     id="popover-bottom-target",
-    className="mx-2",
+    className="me-1",
     size="lg",
-    style={"font-size": "2.2rem", "text-decoration": "none"},
+    # style={
+    #     "font-size": "1.5rem",
+    #     # "padding": "50px10px",
+    # },  # "padding - first val top/bot, 2nd left/right"
 )
 
 page2_button = dbc.Button(
@@ -21,7 +24,7 @@ page2_button = dbc.Button(
     href="/pages/page2",
     className="mx-2",
     size="lg",
-    style={"font-size": "2.2rem", "text-decoration": "none"},
+    style={"font-size": "1.5rem", "text-decoration": "none"},
 )  #
 
 # a contact me button with email, website, github etc.
@@ -68,14 +71,16 @@ contact_popover = dbc.Popover(
 )
 
 # make a reuseable navitem for the different examples
-ty_website_link = dbc.NavItem(
-    dbc.NavLink(
-        "www.ty-andrews.com",
-        href="https://ty-andrews.com/",
-        target="_blank",
-        style={"font-size": "2.0rem", "font-color": "#FFFFFF"},
-    )
+ty_website_link = dbc.NavLink(
+    "www.ty-andrews.com",
+    href="https://ty-andrews.com/",
+    external_link=True,
+    style={
+        # "font-size": "1.2rem",
+        "font-color": "#FFFFFF",
+    },
 )
+
 
 # custom navbar based on https://getbootstrap.com/docs/4.1/examples/dashboard/
 def footer():
@@ -99,7 +104,7 @@ def header():
 
     return dbc.Navbar(
         [
-            dbc.Col(html.Img(src=STRAVASNOOPER_LOGO, height="70px"), sm=8, md=6, lg=4),
+            dbc.Col(html.Img(src=STRAVASNOOPER_LOGO, height="60px"), sm=8, md=6, lg=4),
             dbc.Col(
                 "What does Strava know about you?",
                 style={"textAlign": "center", "font-size": "2rem", "color": "white"},
@@ -111,16 +116,25 @@ def header():
             dbc.Collapse(
                 dbc.Nav(
                     [
-                        page2_button,
-                        contact_button,
+                        dbc.NavItem(
+                            dbc.NavLink(
+                                "Home",
+                                active="exact",
+                                href="/",
+                                style={"text-decoration": "none"},
+                            )
+                        ),
+                        dbc.NavItem(ty_website_link),
+                        dbc.NavItem(contact_button),
                         contact_popover,
-                        ty_website_link,
                     ],
                     className="ml-auto",
-                    navbar=True,  # fill=True, justified=True
+                    navbar=True,
+                    pills=True,
                 ),
                 id="navbar-collapse",
                 navbar=True,
+                className="g-0",
             ),
         ],
         color="primary",
