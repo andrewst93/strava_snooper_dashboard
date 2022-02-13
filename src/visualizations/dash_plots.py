@@ -479,7 +479,7 @@ def plot_eda_data(input_data, year_range, y_label, group_by):
     fig.update_traces(xbins_size=group_map[group_by])
     fig.update_layout(
         bargap=0.1,
-        title="Activity Data",
+        title="Interactive Activity Data",
         showlegend=True,
         title_x=0.5,
         title_font_size=25,
