@@ -17,6 +17,7 @@ STRAVA_CLIENT_SECRET = os.getenv("STRAVA_CLIENT_SECRET")
 STRAVA_TOKEN = json.loads(os.getenv("STRAVA_TOKEN").replace("'", '"'))
 DATASET_ID = os.getenv("DATASET_ID")
 TABLE_ID = os.getenv("TABLE_ID")
+PROJECT_ID = os.getenv("GCP_PROJECT")
 
 
 def get_latest_request_date():
@@ -26,13 +27,13 @@ def get_latest_request_date():
         [unix timestamp]: The number of milliseconds that have passed since January 1, 1970 00:00:00 (UTC)
     """
 
-    client = bigquery.Client(project="stravasnooper-dev")
+    client = bigquery.Client(project=PROJECT_ID)
     dataset_ref = client.dataset(DATASET_ID)
     table_ref = dataset_ref.table(TABLE_ID)
 
     max_request_date_query = """SELECT MAX(processed_timestamp) AS most_recent_processing
-    FROM `stravasnooper-dev.{0}.{1}` LIMIT 1000""".format(
-        DATASET_ID, TABLE_ID
+    FROM `{0}.{1}.{2}` LIMIT 1000""".format(
+        PROJECT_ID, DATASET_ID, TABLE_ID
     )
 
     try:
@@ -146,7 +147,7 @@ def load_strava_data_into_bq(df):
         df (DataFrame): Cleaned & pre-processed Strava data returned from clean_raw_strava_data
     """
 
-    client = bigquery.Client(project="stravasnooper-dev")
+    client = bigquery.Client(project=PROJECT_ID)
 
     dataset_ref = client.dataset(DATASET_ID)
     table_ref = dataset_ref.table(TABLE_ID)
