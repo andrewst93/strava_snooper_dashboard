@@ -9,7 +9,11 @@ try:
 except ImportError:
     pass
 
-app = dash.Dash(__name__, external_stylesheets=[dbc.themes.UNITED])  # dbc.themes.UNITED
+app = dash.Dash(
+    __name__,
+    external_stylesheets=[dbc.themes.UNITED],
+    meta_tags=[{"name": "viewport", "content": "width=device-width, initial-scale=1"}],
+)  # dbc.themes.UNITED
 app.title = "Strava Snooper"
 server = app.server
 app.config.suppress_callback_exceptions = True
