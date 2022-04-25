@@ -91,7 +91,7 @@ jumbotron = dbc.Jumbotron(
     className="dash-bootstrap",
 )
 
-activity_controls = html.Div(
+activity_controls = dbc.Col(
     [
         html.P(
             "All of my past 8 years of activities uploaded to Strava were exported. "
@@ -160,14 +160,14 @@ activity_controls = html.Div(
     # body=True,
 )
 
-# DCC card for showing my activitees over time etc.
+# DCC card for showing my activities over time etc.
 data_intro_card = dbc.Card(
     [
         dbc.CardHeader(html.H4("Explore My Strava Data")),
         dbc.CardBody(
             dbc.Row(
                 [
-                    dbc.Col(activity_controls, width=3),
+                    dbc.Col(activity_controls, width=12, lg=3),
                     dbc.Col(
                         dbc.Card(
                             dbc.CardBody(
@@ -180,7 +180,8 @@ data_intro_card = dbc.Card(
                                 )
                             )
                         ),
-                        width=9,
+                        width=12,
+                        lg=9,
                     ),
                 ]
             )
@@ -248,7 +249,8 @@ employment_hypoth = dbc.Card(
                                     " when I'm working fewer activities started during work hours."
                                 ),
                             ],
-                            width=3,
+                            width=12,
+                            lg=3,
                         ),
                         dbc.Col(
                             dbc.Card(
@@ -268,7 +270,8 @@ employment_hypoth = dbc.Card(
                                                             "displayModeBar": False
                                                         },
                                                     ),
-                                                    width=6,
+                                                    width=12,
+                                                    lg=6,
                                                 ),
                                                 dbc.Col(
                                                     dcc.Graph(
@@ -278,14 +281,16 @@ employment_hypoth = dbc.Card(
                                                             "displayModeBar": False
                                                         },
                                                     ),
-                                                    width=6,
+                                                    width=12,
+                                                    lg=6,
                                                 ),
                                             ]
                                         ),
                                     ]
                                 )
                             ),
-                            width=9,
+                            width=12,
+                            lg=9,
                         ),
                     ]
                 ),
@@ -310,7 +315,8 @@ employment_hypoth = dbc.Card(
                                     )
                                 ),
                             ],
-                            width=3,
+                            width=12,
+                            lg=3,
                         ),
                         dbc.Col(
                             dbc.Card(
@@ -334,7 +340,8 @@ employment_hypoth = dbc.Card(
                                     ]
                                 )
                             ),
-                            width=9,
+                            width=12,
+                            lg=9,
                         ),
                     ]
                 ),
@@ -365,7 +372,8 @@ employment_hypoth = dbc.Card(
                                     "- including activities started in evenings, lunch times and mornings as features"
                                 ),
                             ],
-                            width=3,
+                            width=12,
+                            lg=3,
                         ),
                         dbc.Col(
                             dbc.Card(
@@ -391,7 +399,8 @@ employment_hypoth = dbc.Card(
                                                             },
                                                         ),
                                                     ],
-                                                    width=6,
+                                                    width=12,
+                                                    lg=6,
                                                 ),
                                                 dbc.Col(
                                                     [
@@ -408,7 +417,8 @@ employment_hypoth = dbc.Card(
                                                             },
                                                         ),
                                                     ],
-                                                    width=6,
+                                                    width=12,
+                                                    lg=6,
                                                 ),
                                             ],
                                             justify="center",
@@ -425,7 +435,8 @@ employment_hypoth = dbc.Card(
                                                             "displayModeBar": False
                                                         },
                                                     ),
-                                                    width=6,
+                                                    width=12,
+                                                    lg=6,
                                                 ),
                                                 dbc.Col(
                                                     dcc.Graph(
@@ -436,14 +447,16 @@ employment_hypoth = dbc.Card(
                                                             "displayModeBar": False
                                                         },
                                                     ),
-                                                    width=6,
+                                                    width=12,
+                                                    lg=6,
                                                 ),
                                             ],
                                         ),
                                     ]
                                 )
                             ),
-                            width=9,
+                            width=12,
+                            lg=9,
                         ),
                     ]
                 ),
@@ -458,8 +471,20 @@ layout = html.Div(
     [
         header(),
         jumbotron,
-        dbc.Row(dbc.Col(data_intro_card, width={"size": 10, "offset": 1})),
-        dbc.Row(dbc.Col(employment_hypoth, width={"size": 10, "offset": 1})),
+        dbc.Row(
+            dbc.Col(
+                data_intro_card,
+                width={"size": 12, "offset": 0},
+                lg={"size": 10, "offset": 1},
+            )
+        ),
+        dbc.Row(
+            dbc.Col(
+                employment_hypoth,
+                width={"size": 12, "offset": 0},
+                lg={"size": 10, "offset": 1},
+            )
+        ),
         footer(),
     ],
 )

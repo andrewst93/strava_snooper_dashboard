@@ -9,7 +9,7 @@ from dash.dependencies import Input, Output
 #     sys.path.append(src_path)
 
 from app import app, server
-from pages import homepage, page2, layouts
+from pages import kudos_prediction, layouts, employment_prediction  # homepage,
 
 app.layout = html.Div(
     [dcc.Location(id="url", refresh=False), html.Div(id="page-content")]
@@ -50,9 +50,9 @@ app.index_string = """<!DOCTYPE html>
 @app.callback(Output("page-content", "children"), Input("url", "pathname"))
 def display_page(pathname):
     if pathname == "/":
-        return homepage.layout
-    elif pathname == "/pages/page2":
-        return page2.layout
+        return employment_prediction.layout
+    elif pathname == "/pages/kudos-prediction":
+        return kudos_prediction.layout
     else:
         return "404"
 

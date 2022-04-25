@@ -104,7 +104,13 @@ def header():
 
     return dbc.Navbar(
         [
-            dbc.Col(html.Img(src=STRAVASNOOPER_LOGO, height="60px"), sm=8, md=6, lg=4),
+            dbc.Col(
+                html.Img(src=STRAVASNOOPER_LOGO, style={"width": "100%"}),
+                xs=12,
+                sm=8,
+                md=6,
+                lg=4,
+            ),
             dbc.Col(
                 "What does Strava know about you?",
                 style={"textAlign": "center", "font-size": "2rem", "color": "white"},
@@ -122,6 +128,14 @@ def header():
                                 active="exact",
                                 href="/",
                                 style={"text-decoration": "none"},
+                            )
+                        ),
+                        dbc.NavItem(
+                            dbc.NavLink(
+                                "Predict Your Kudos",
+                                active="exact",
+                                href="/pages/kudos-prediction",
+                                style={"text-decoration": "none", "font-weight": 700},
                             )
                         ),
                         dbc.NavItem(ty_website_link),
