@@ -17,7 +17,7 @@ if [[ -z "${DATABASE_URL}" ]]; then # Allow overriding for local deployment
 fi
 
 # Verify that all required variables are set
-if [[ -z "${MLFLOW_TRACKING_USERNAME}" ]]; then
+if [[ -z "${MLFLOW_TRACKING_USERNAME}" ]]; then 
     echo "Error: MLFLOW_TRACKING_USERNAME not set"
     exit 1
 fi

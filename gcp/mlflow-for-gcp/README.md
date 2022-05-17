@@ -161,3 +161,8 @@ You can see `sample_client` directory for an example client code for deployed `m
 * Set your environment variables (see `.envrc.template`)
 * Install your dependencies (`requirements.txt`)
 * Run the sample `python3 check_tracking.py`
+
+# TA Improvements/Notes
+
+- double check mlflow-tracking username as it didn't match and would give http auth error in the Cloud Run logs  
+- make sure to shut down the cloud sql instance when not in use to save costs
