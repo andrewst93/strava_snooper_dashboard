@@ -41,7 +41,7 @@ async def root():
 
 
 class PredictedKudos(BaseModel):
-    perc_follwers: List[float]
+    perc_followers: List[float]
     num_kudos: List[int]
 
 
