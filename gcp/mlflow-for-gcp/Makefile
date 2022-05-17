@@ -10,4 +10,4 @@ tag:
 	docker tag "${IMAGE_NAME}" "gcr.io/${GCP_PROJECT}/${IMAGE_NAME}:${VERSION}"
 
 push:
-	docker push "gcr.io/${GCP_PROJECT}/${IMAGE_NAME}:${VERSION}"
+	docker push "gcr.io/${GCP_PROJECT}/${IMAGE_NAME}:${VERSION}" 
