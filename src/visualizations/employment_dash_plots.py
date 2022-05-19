@@ -316,7 +316,7 @@ def plot_training_data(train_data, train_labels, test_data, test_labels):
     ).update_traces(marker=dict(size=10, line_width=2, line_color="black"))
 
     data_plot.update_layout(
-        title=f"Data Set of Employed & Unemployed Months",
+        title=f"Data Set of Employed & <br>Unemployed Months",
         xaxis=dict(
             title="Activities During Morning Work Hours",
             tickformat=",.0%",
@@ -330,7 +330,7 @@ def plot_training_data(train_data, train_labels, test_data, test_labels):
         title_x=0.5,
         title_font_size=17,
         font_size=12,
-        margin=dict(l=20, r=20, t=50, b=20),
+        margin=dict(l=5, r=5, t=50, b=20),
         legend=dict(
             # orientation="h",
             yanchor="top",
@@ -482,7 +482,7 @@ def plot_eda_data(input_data, year_range, y_label, group_by):
         title="Interactive Activity Data",
         showlegend=True,
         title_x=0.5,
-        title_font_size=25,
+        title_font_size=17,
         font_size=12,
         legend={"traceorder": "normal"},
     )

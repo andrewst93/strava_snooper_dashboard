@@ -267,3 +267,74 @@ def plot_achievement_prediction(
     )
 
     return achievement_plot
+
+
+def plot_prediction_vs_actual_data(actual_kudos, pred_kudos):
+
+    # combined_data = pd.concat([train_data, test_data])
+    # combined_labels = pd.concat([train_labels, test_labels])
+
+    x_min, x_max = (0, max(actual_kudos + pred_kudos) + 2)
+    y_min, y_max = (0, max(actual_kudos + pred_kudos) + 2)
+
+    kudo_pred_plot = px.scatter(
+        x=actual_kudos,
+        y=pred_kudos,
+        # color="#FFA400",
+        color_discrete_sequence=["#FFA400"]
+        # color_discrete_map={"unemployed": "#009FFD", "employed": "#FFA400"},
+        # labels={
+        #     "color": "Label",
+        # },
+    ).update_traces(marker=dict(size=10, line_width=2, line_color="black"))
+
+    kudo_pred_plot.update_layout(
+        title=f"Predicted vs. Actual Kudos<br>of Most Recent {len(actual_kudos)} Rides",
+        xaxis=dict(
+            title="ACTUAL No. of Kudos",
+            # tickformat=",.0%",
+            range=[x_min, x_max],
+        ),
+        yaxis=dict(
+            title="PREDICTED No. of Kudos",
+            # tickformat=",.0%",
+            range=[y_min, y_max],
+        ),
+        title_x=0.5,
+        title_font_size=17,
+        font_size=12,
+        margin=dict(l=5, r=5, t=50, b=20),
+        legend=dict(
+            # orientation="h",
+            yanchor="top",
+            y=1.0,
+            xanchor="right",
+            x=1,
+        ),
+        shapes=[
+            {
+                "type": "line",
+                "yref": "paper",
+                "xref": "paper",
+                "y0": 0,
+                "y1": 1,
+                "x0": 0,
+                "x1": 1,
+                "layer": "below",
+            }
+        ],
+    )
+
+    kudo_pred_plot.add_annotation(
+        text="Ideal Predictions",
+        xref="paper",
+        yref="paper",
+        x=0.9,
+        y=1.0,
+        showarrow=False,
+        font=dict(
+            size=16,
+            ),
+    )
+
+    return kudo_pred_plot

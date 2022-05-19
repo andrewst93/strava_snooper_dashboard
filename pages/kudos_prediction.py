@@ -1,6 +1,6 @@
-import dash_core_components as dcc
 import dash_bootstrap_components as dbc
-import dash_html_components as html
+from dash import dcc
+from dash import html
 from dash.dependencies import Input, Output
 import time
 import sys
@@ -17,8 +17,11 @@ from src.visualizations.kudos_prediction_dash_plots import (
     plot_distance_prediction,
     plot_elevation_prediction,
     plot_achievement_prediction,
+    plot_prediction_vs_actual_data,
 )
 from src.data.kudos_data_load import load_static_kudos_predictions
+from src.data.gcp_strava_data_load_preprocess import load_strava_activity_data_from_bq
+from src.models.predict_kudos import predict_kudos
 
 # initial values
 num_followers = 100
@@ -27,7 +30,12 @@ custom_name_bool = 0
 achievements = 15
 elevation = 4  # 100's of meters
 
-static_kudos_predictions = load_static_kudos_predictions("2022-04-19")
+# date of raw data file to load
+static_kudos_predictions = load_static_kudos_predictions("2022-05-18")
+
+# for real time running on GCP App engine pull data from BQ
+# raw_files_dict = load_strava_activity_data_from_bq()
+
 
 kudos_prediction = (
     static_kudos_predictions.loc[
@@ -80,7 +88,7 @@ kudos_controls = html.Div(
             type="number", min=5, max=1000, step=1, value=100, id="num-followers"
         ),
         html.Br(),
-        dbc.FormGroup(
+        dbc.Col(
             [
                 dbc.Label("Ride Naming"),
                 dbc.RadioItems(
@@ -106,7 +114,7 @@ kudos_controls = html.Div(
                 html.Br(),
                 dbc.Label("Elevation Gain (hundreds of m)"),
                 dcc.Slider(
-                    min=1,
+                    min=2,
                     max=29,
                     step=1,
                     value=elevation,
@@ -322,10 +330,3 @@ def update_predicted_kudos_number(
         elevation_value_fig,
         achievement_value_fig,
     )
-
-
-@app.callback(
-    Output("app-2-display-value", "children"), Input("app-2-dropdown", "value")
-)
-def display_value(value):
-    return 'You have selected "{}"'.format(value)

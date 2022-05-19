@@ -18,23 +18,34 @@ def load_strava_activity_data_from_bq(users=["TyAndrews"]):
     raw_files_dict = {}
     for user in users:
 
-        print(f"{user} Data Found")
         bqclient = bigquery.Client()
 
         strava_data_query = """
             SELECT 
+                name,
                 distance_km,
                 type,
                 start_date_local AS start_time,
                 distance_km AS distance_raw_km,
                 elapsed_time_hrs AS elapsed_time_raw_hrs,
                 moving_time_hrs AS moving_time_raw_hrs,
-                total_elevation_gain AS elevation_gain
-            FROM `{0}.prod_dashboard.raw_strava_data` LIMIT 5000""".format(
+                total_elevation_gain AS elevation_gain, 
+                kudos_count AS kudos,
+                achievement_count,
+
+            FROM `{0}.prod_dashboard.raw_strava_data` 
+            ORDER BY start_date_local DESC
+            LIMIT 5000""".format(
             bqclient.project
         )
 
-        raw_files_dict[user] = bqclient.query(strava_data_query).result().to_dataframe()
+        try:
+            raw_df = bqclient.query(strava_data_query).result().to_dataframe()
+            raw_files_dict[user] = preprocess_strava_df(raw_df)
+        except Exception as e:
+            print(
+                f"[load_strava_activity_data_from_bq] Issue getting data from BQ - {e}"
+            )
 
         print(
             f"load_strava_activity_data: Took {time.time() - start_time: .2f}s to get BQ data"
@@ -45,37 +56,39 @@ def load_strava_activity_data_from_bq(users=["TyAndrews"]):
 
 def preprocess_strava_df(raw_df, min_act_length=1200, max_act_dist=400, export=False):
 
-    # Remove activites under 5 minutes in length
-    processed_df = raw_df[
-        (raw_df.elapsed_time_raw > min_act_length) & (raw_df.distance < max_act_dist)
-    ]
-    print(
-        f"\t{len(raw_df[(raw_df.elapsed_time_raw < min_act_length) & (raw_df.distance < max_act_dist)])} Activities Under 20min in Length, Removed from Dataset"
-    )
+    processed_df = raw_df.copy(deep=True)
 
-    processed_df = processed_df.convert_dtypes()
-    processed_df[["distance", "distance_raw"]] = processed_df[
-        ["distance", "distance_raw"]
-    ].apply(pd.to_numeric)
-    processed_df[["start_date_local"]] = pd.to_datetime(
-        processed_df["start_date_local_raw"], unit="s"
-    )  # .apply(pd.to_datetime(unit='s'))
-    processed_df["exer_start_time"] = pd.to_datetime(
-        processed_df["start_date_local"].dt.strftime("1990:01:01:%H:%M:%S"),
-        format="1990:01:01:%H:%M:%S",
-    )
-    # processed_df['exer_start_time'] = pd.to_datetime(pd.to_datetime(processed_df['start_time']).dt.strftime('1990:01:01:%H:%M:%S'), format='1990:01:01:%H:%M:%S')
-    processed_df["exer_start_time"] = (
-        processed_df["exer_start_time"]
-        .dt.tz_localize("UTC")
-        .dt.tz_convert("Europe/London")
-    )
-    processed_df["act_type_perc_time"] = processed_df["moving_time_raw"] / sum(
-        processed_df["moving_time_raw"]
-    )
-    processed_df["elapsed_time_raw_hrs"] = processed_df["elapsed_time_raw"] / 3600
-    processed_df["moving_time_raw_hrs"] = processed_df["moving_time_raw"] / 3600
-    processed_df["distance_raw_km"] = processed_df["distance_raw"] / 1000
+    # processed_df = processed_df.convert_dtypes()
+    # processed_df[["distance", "distance_raw"]] = processed_df[
+    #     ["distance", "distance_raw"]
+    # ].apply(pd.to_numeric)
+    # processed_df[["start_date_local"]] = pd.to_datetime(
+    #     processed_df["start_date_local_raw"], unit="s"
+    # )  # .apply(pd.to_datetime(unit='s'))
+    # processed_df["exer_start_time"] = pd.to_datetime(
+    #     processed_df["start_date_local"].dt.strftime("1990:01:01:%H:%M:%S"),
+    #     format="1990:01:01:%H:%M:%S",
+    # )
+    # # processed_df['exer_start_time'] = pd.to_datetime(pd.to_datetime(processed_df['start_time']).dt.strftime('1990:01:01:%H:%M:%S'), format='1990:01:01:%H:%M:%S')
+    # processed_df["exer_start_time"] = (
+    #     processed_df["exer_start_time"]
+    #     .dt.tz_localize("UTC")
+    #     .dt.tz_convert("Europe/London")
+    # )
+    # processed_df["act_type_perc_time"] = processed_df["moving_time_raw"] / sum(
+    #     processed_df["moving_time_raw"]
+    # )
+    # processed_df["elapsed_time_raw_hrs"] = processed_df["elapsed_time_raw"] / 3600
+    # processed_df["moving_time_raw_hrs"] = processed_df["moving_time_raw"] / 3600
+    # processed_df["distance_raw_km"] = processed_df["distance_raw"] / 1000
+
+    processed_df["custom_name_bool"] = 1
+    processed_df.loc[
+        processed_df.name.isin(
+            ["Afternoon Ride", "Lunch Ride", "Morning Ride", "Evening Ride"]
+        ),
+        "custom_name_bool",
+    ] = 0
 
     if export == True:
         processed_df.to_csv(r"data\processed\ProcessedStravaData.csv")

@@ -1,5 +1,5 @@
-import dash_core_components as dcc
-import dash_html_components as html
+from dash import dcc
+from dash import html
 from dash.dependencies import Input, Output, State
 import dash_bootstrap_components as dbc
 
@@ -132,13 +132,21 @@ def header():
                         ),
                         dbc.NavItem(
                             dbc.NavLink(
+                                "Employment Prediction",
+                                active="exact",
+                                href="/pages/employment-prediction",
+                                style={"text-decoration": "none", "font-weight": 700},
+                            )
+                        ),
+                        dbc.NavItem(
+                            dbc.NavLink(
                                 "Predict Your Kudos",
                                 active="exact",
                                 href="/pages/kudos-prediction",
                                 style={"text-decoration": "none", "font-weight": 700},
                             )
                         ),
-                        dbc.NavItem(ty_website_link),
+                        # dbc.NavItem(ty_website_link),
                         dbc.NavItem(contact_button),
                         contact_popover,
                     ],

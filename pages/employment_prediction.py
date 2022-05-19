@@ -3,8 +3,8 @@ import time
 import sys
 
 import dash
-import dash_core_components as dcc
-import dash_html_components as html
+from dash import dcc
+from dash import html
 import dash_bootstrap_components as dbc
 from dash.dependencies import Input, Output, State
 import plotly.graph_objs as go
@@ -64,32 +64,33 @@ activity_over_time = plot_eda_data(
 )
 
 # # page intro card for top of page under header and link to blog post on it.
-jumbotron = dbc.Jumbotron(
-    [
-        html.H6(
-            "Millions of people upload their activities to Strava every day. This got me wondering...",
-            className="display-6",
-        ),
-        html.Hr(className="my-2"),
-        html.H5(
-            "What does Strava know about us from our uploaded activities?",
-            className="display-5",
-        ),
-        html.P(
-            "For a full description of the analysis below see the full write up here."
-        ),
-        html.P(
-            dbc.Button(
-                "LEARN MORE",
-                size="lg",
-                href="https://ty-andrews.com/post/2021-02-23-what-does-strava-know-about-me/",
-                color="primary",
-                target="_blank",
-            )
-        ),  # , className="lead"
-    ],
-    className="dash-bootstrap",
-)
+# jumbotron = dbc.Container(
+#     [
+#         html.H6(
+#             "Millions of people upload their activities to Strava every day. This got me wondering...",
+#             className="display-6",
+#         ),
+#         html.Hr(className="my-2"),
+#         html.H5(
+#             "What does Strava know about us from our uploaded activities?",
+#             className="display-5",
+#         ),
+#         html.P(
+#             "For a full description of the analysis below see the full write up here."
+#         ),
+#         html.P(
+#             dbc.Button(
+#                 "LEARN MORE",
+#                 size="lg",
+#                 href="https://ty-andrews.com/post/2021-02-23-what-does-strava-know-about-me/",
+#                 color="primary",
+#                 target="_blank",
+#             )
+#         ),  # , className="lead"
+#     ],
+#     className="h-100 p-5 bg-light border rounded-3",  # "dash-bootstrap py-3",
+#     fluid=True,
+# )
 
 activity_controls = dbc.Col(
     [
@@ -98,7 +99,7 @@ activity_controls = dbc.Col(
             "From 2014-2017 I was training and going to school. 2017 to now I have been working "
             "full time."
         ),
-        dbc.FormGroup(
+        dbc.Row(
             [
                 dbc.Label("Y variable"),
                 dcc.Dropdown(
@@ -117,7 +118,7 @@ activity_controls = dbc.Col(
                 ),
             ]
         ),
-        dbc.FormGroup(
+        dbc.Row(
             [
                 dbc.Label("Display Per:"),
                 dcc.Dropdown(
@@ -131,7 +132,7 @@ activity_controls = dbc.Col(
                 ),
             ]
         ),
-        dbc.FormGroup(
+        dbc.Row(
             [
                 dbc.Label("Year Range"),
                 dcc.RangeSlider(
@@ -256,9 +257,9 @@ employment_hypoth = dbc.Card(
                             dbc.Card(
                                 dbc.CardBody(
                                     [
-                                        dbc.Row(
+                                        html.Center(
                                             html.H5("First Look at the Data"),
-                                            justify="center",
+                                            # justify="end",
                                         ),
                                         dbc.Row(
                                             [
@@ -384,11 +385,10 @@ employment_hypoth = dbc.Card(
                                             [
                                                 dbc.Col(
                                                     [
-                                                        dbc.Row(
+                                                        html.Center(
                                                             html.H5(
                                                                 "Training Data - 70%"
                                                             ),
-                                                            justify="center",
                                                         ),
                                                         dcc.Graph(
                                                             id="logreg-train-data-plot",
@@ -404,9 +404,8 @@ employment_hypoth = dbc.Card(
                                                 ),
                                                 dbc.Col(
                                                     [
-                                                        dbc.Row(
+                                                        html.Center(
                                                             html.H5("Test Data - 30%"),
-                                                            justify="center",
                                                         ),
                                                         dcc.Graph(
                                                             id="logreg-test-data-plot",
@@ -470,14 +469,6 @@ employment_hypoth = dbc.Card(
 layout = html.Div(
     [
         header(),
-        jumbotron,
-        dbc.Row(
-            dbc.Col(
-                data_intro_card,
-                width={"size": 12, "offset": 0},
-                lg={"size": 10, "offset": 1},
-            )
-        ),
         dbc.Row(
             dbc.Col(
                 employment_hypoth,
@@ -490,13 +481,13 @@ layout = html.Div(
 )
 
 # Updating the eda plot based on slider/dropdown selections
-@app.callback(
-    Output("eda-plot", "figure"),
-    [
-        Input("eda-variable", "value"),
-        Input("year-selector", "value"),
-        Input("eda-group", "value"),
-    ],
-)
-def update_eda_plot(y_label, year_range, group_by):
-    return plot_eda_data(raw_files_dict["TyAndrews"], year_range, y_label, group_by)
+# @app.callback(
+#     Output("eda-plot", "figure"),
+#     [
+#         Input("eda-variable", "value"),
+#         Input("year-selector", "value"),
+#         Input("eda-group", "value"),
+#     ],
+# )
+# def update_eda_plot(y_label, year_range, group_by):
+#     return plot_eda_data(raw_files_dict["TyAndrews"], year_range, y_label, group_by)
