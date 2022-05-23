@@ -10,9 +10,11 @@ COPY ./app /code/app
 
 COPY ./models /code/models
 
+EXPOSE $PORT
+
 CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8080"]
 
-
+# EXPOSE 8080
 
 # FROM ubuntu:latest
 # LABEL author="Ty Andrews"

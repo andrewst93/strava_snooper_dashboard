@@ -33,10 +33,13 @@ app = FastAPI(
 
 @app.get("/")
 async def root():
-    intro_message = """<h1><span style="color: #ff6600;">Welcome to the Stravasnooper ML API</span></h1> 
-                    <p>This is a collection of models/tools developed from a completely unnecessary exploration of my Strava data.</p> 
-                    <p><strong>To learn how to use this API for your own projects or interest visit: 
-                    <a href="https://ml.stravasnooper.com/docs">ml.stravasnooper.com/docs</a></strong></p>"""
+    intro_message = """<h2 style="text-align: center;"><img src="https://www.stravasnooper.com/assets/images/strava_snooper_wide_logo.png" alt="" width="636" height="82" /></h2>
+        <h2 style="text-align: center;">Welcome To The StravaSnooper ML API</h2>
+        <p style="text-align: center;">These API's look to help us better understand our Strava data and what we can do with it. Models are developed and hosted by Ty Andrews.</p>
+        <p style="text-align: center;"><a href="/docs">API Documentation</a></p>
+        <h3 style="text-align: center;">&nbsp;<strong>Kudos Prediction API</strong></h3>
+        <p style="text-align: center;">Predict how many kudos you'll get based on your upcoming ride plan and you can try to maximize them.</p>
+        <p style="text-align: center;"><a href="https://www.stravasnooper.com/pages/kudos-prediction" target="_blank" rel="noopener">Try the Demo Here</a></p>"""
     return HTMLResponse(content=intro_message, status_code=200)
 
 
