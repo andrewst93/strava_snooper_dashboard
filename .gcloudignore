@@ -22,3 +22,6 @@ __pycache__/
 #ignore notebook files
 *.ipynb
 *.env
+
+# non-dashboard required files/folders
+/gcp
