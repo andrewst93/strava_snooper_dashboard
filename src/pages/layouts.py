@@ -1,11 +1,26 @@
 from dash import dcc
 from dash import html
 from dash.dependencies import Input, Output, State
+import plotly.express as px
 import dash_bootstrap_components as dbc
 
 from app import app
 
 STRAVASNOOPER_LOGO = "/assets/images/strava_snooper_wide_logo.png"
+
+
+def blank_placeholder_plot(background_color="white"):
+
+    blank_plot = px.scatter(x=[0, 1], y=[0, 1])
+    blank_plot.update_xaxes(showgrid=False, showticklabels=False, visible=False)
+    blank_plot.update_yaxes(showgrid=False, showticklabels=False, visible=False)
+
+    blank_plot.update_traces(marker=dict(color=background_color))
+
+    blank_plot.layout.plot_bgcolor = background_color
+    blank_plot.layout.paper_bgcolor = background_color
+    return blank_plot
+
 
 # # a contact me button with email, website, github etc.
 contact_button = dbc.Button(

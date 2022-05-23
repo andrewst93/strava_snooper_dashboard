@@ -495,19 +495,6 @@ def plot_eda_data(input_data, year_range, y_label, group_by):
     )
     fig.update_yaxes(autorange=True)
 
-    # fig.add_traces(
-    #     px.scatter(data,
-    #         x="start_time",
-    #         y=y_label,
-
-    #         color='type',
-
-    #     ).data[:]
-    # )
-    # fig.update_layout(
-    #                     xaxis_range=[datetime(year_range[0],1,1), datetime(year_range[1],1,1)]
-    #                     )
-
     return fig
 
 
