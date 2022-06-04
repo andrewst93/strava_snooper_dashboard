@@ -5,6 +5,9 @@ from dash import html
 from dash.dependencies import Input, Output, State
 from dash.exceptions import PreventUpdate
 import dash_loading_spinners
+import logging
+
+logging.basicConfig()
 
 # src_path = os.path.abspath(os.path.join(".."))
 # if src_path not in sys.path:
@@ -90,7 +93,7 @@ app.index_string = """<!DOCTYPE html>
 )
 def display_page(pathname):
     if pathname == "/":
-        return homepage.get_layout()
+        return homepage.layout
     if pathname == "/pages/employment-prediction":
         return employment_prediction.layout
     elif pathname == "/pages/kudos-prediction":
