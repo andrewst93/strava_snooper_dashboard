@@ -6,7 +6,7 @@ import numpy as np
 import json
 from sklearn.metrics import accuracy_score
 
-from src.data.strava_data_load_preprocess import (
+from src.data.gcp_strava_data_load_preprocess import (
     load_week_start_times_data,
     load_lgbm_model_results,
     load_logreg_model_results,
@@ -27,39 +27,6 @@ ACTIVITY_COLOR_MAP = {
     "Workout": "#FF6692",
     "WeightTraining": "#B6E880",
 }
-
-
-def activity_pie_plot(df, val, label, title):
-    """Builds a plotly pie plot broken by activity.
-
-    Args:
-        df (DataFrame): raw data to include in the pie plot
-        val (string): which column to plot.
-        label (string): what the lables should display in the legend,
-        title (string): Title to be displayed on the plot
-
-    Returns:
-        [Plotly Express Figure]: The complete pie plot of activity types
-    """
-
-    fig = px.pie(
-        df,
-        values=val,
-        names=label,
-        # color_discrete_sequence= kaha_color_list,
-        title=title,
-        labels={"type": "Activity Type"},
-    )
-    fig.update_traces(textposition="inside", textinfo="label+percent", sort=False)
-    fig.update_layout(
-        showlegend=True,
-        title_x=0.5,
-        title_font_size=25,
-        font_size=15,
-        legend={"traceorder": "normal"},
-    )
-
-    return fig
 
 
 def plot_lgbm_model_predictions(
@@ -295,6 +262,18 @@ def plot_logreg_model_predictions(data, labels, data_set):
 
 
 def plot_training_data(train_data, train_labels, test_data, test_labels):
+    """Generates a visualization of employment data by afternoon/morning work hours and whether
+    employed or unemployed.
+
+    Args:
+        train_data (DataFrame): The morning/afternoon training data
+        train_labels (Series): Labels for the train_data
+        test_data (DataFrame): THe morning/afternoon test data
+        test_labels (Series): Labels for the test_data
+
+    Returns:
+        px.Scatter: Plotly figure showing the employed vs unemplyed data points by morning/afternoon activity instances.
+    """
 
     combined_data = pd.concat([train_data, test_data])
     combined_labels = pd.concat([train_labels, test_labels])
@@ -344,6 +323,19 @@ def plot_training_data(train_data, train_labels, test_data, test_labels):
 
 
 def plot_weekly_start_times(activity_df, start_year, end_year, work_hours, title_descr):
+    """Generate the plot of weekly start times by hour of day per year to observe trends
+    between employed and unemployed years.
+
+    Args:
+        activity_df (DataFrame): The Strava activity data to generate from
+        start_year (int): Year for which to start visualization, e.g. 2011
+        end_year (int): Year for which to end visualization, e.g. 1993
+        work_hours (list): 2x2 list of active work hours in 24hr time, e.g. [[9,11], [1,4]]
+        title_descr (str): Title for the plot.
+
+    Returns:
+        go.Figure: The plotly figure ready to be displayed.
+    """
 
     start_time_fig = go.Figure()
 
@@ -445,6 +437,18 @@ def plot_weekly_start_times(activity_df, start_year, end_year, work_hours, title
 
 
 def plot_eda_data(input_data, year_range, y_label, group_by):
+    """Displays all the Strava data from multiple acivities and can be controlled through interactive controls
+    in the dashboard and triggered through callbacks.
+
+    Args:
+        input_data (DataFrame): The Strava data to be selected from
+        year_range (list): 1x2 list of start/end year to be plotted between
+        y_label (str): which category to be plotted on the y-axis
+        group_by (str): the time period by which to aggregate data (year, month day, etc.)
+
+    Returns:
+        px.histogram: The final stacked histogram of the Strava data.
+    """
 
     data = input_data[
         (pd.to_datetime(input_data.start_time) > (str(year_range[0]) + "-1-1"))
@@ -494,26 +498,5 @@ def plot_eda_data(input_data, year_range, y_label, group_by):
         # range=[datetime(year_range[0],1,1), datetime(year_range[1],1,1)],
     )
     fig.update_yaxes(autorange=True)
-
-    return fig
-
-
-def plot_activity_histogram(data):
-
-    # fig = go.Histogram(x=data['start_time'],
-    #                 xbins=dict(
-    #                 start='2013-1-1',
-    #                 end='2022-1-1',
-    #                 size='M1'), # M18 stands for 18 months
-    #                 autobinx=False
-    #                 )
-    fig = px.histogram(
-        data, x="start_time", y="distance_raw_km", histfunc="sum", color="type"
-    )
-    fig.update_traces(xbins_size="M1")
-    fig.update_xaxes(
-        showgrid=True, ticklabelmode="period", dtick="M4", tickformat="%b\n%Y"
-    )
-    fig.update_layout(bargap=0.1, barmode="stack")
 
     return fig

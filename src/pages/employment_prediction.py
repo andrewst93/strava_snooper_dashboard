@@ -21,11 +21,12 @@ if src_path not in sys.path:
 
 from app import app
 from src.pages.layouts import header, footer, blank_placeholder_plot
-from src.data.gcp_strava_data_load_preprocess import load_strava_activity_data_from_bq
-from src.data.strava_data_load_preprocess import (
+from src.data.gcp_strava_data_load_preprocess import (
     load_employment_model_data,
     preprocess_employment_model_data,
+    load_strava_activity_data_from_bq,
 )
+
 from src.visualizations.employment_dash_plots import (
     plot_lgbm_model_predictions,
     plot_logreg_model_predictions,
@@ -364,10 +365,22 @@ layout = html.Div(
     ],
     prevent_initial_call=False,
 )
-def load_app_data(_page_load, strava_dict, empl_dict):
+def update_employment_page(_page_load, strava_dict, empl_dict):
+    """Generates the pages on very first load from the unused page-load-div. Also
+    initializes persistent cached data if it's not already loaded by another page.
+
+    Args:
+        _page_load (None): Placeholder to trigger generation of plots on page load with loading symbols
+
+        strava_dict (dict): The cached strava data if already loaded, can be None if not loaded by another page already.
+        empl_dict (dict): The static employment data that can be used by multiple pages for faster loading of pages.
+
+    Returns:
+        Plotly Figures: multiple primary figures are returned for the employment prediction page.
+    """
 
     if strava_dict is None:
-        strava_df = load_strava_activity_data_from_bq()["TyAndrews"]
+        strava_df = load_strava_activity_data_from_bq()
         strava_dict = strava_df.to_dict("records")
     else:
         strava_df = pd.DataFrame(strava_dict)

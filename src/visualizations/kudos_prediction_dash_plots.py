@@ -13,6 +13,14 @@ BLUE = "#009FFD"
 
 
 def plot_predicted_kudos_value(kudos):
+    """Visualizes a simple text and number of how many kudos were predicted.
+
+    Args:
+        kudos (int): No. of kudos
+
+    Returns:
+        go.Figure: THe standalone figure with Predicted kudos and the number displayed.
+    """
 
     fig = go.Figure(
         go.Indicator(
@@ -38,6 +46,22 @@ def plot_distance_prediction(
     elevation,
     achievements,
 ):
+    """Builds a figure showing the effect of DISTANCE on kudos predictions, including
+    the point at which DISTANCE kudos are maximized and where the current inputs fall
+    on the curve.
+
+    Args:
+        kudos_pred_df (DataFrame): The pre-generated kudos predcitions dataframe
+        kudos_prediction (float): How many kudos are predicted.
+        num_followers (int): No. of followers selected.
+        custom_name_bool (int): 0 for stanfard ride name, 1 for custom ride name
+        distance (int): ride distance in km's
+        elevation (int): elevation gain on the ride in meters
+        achievements (int): No. of achievements
+
+    Returns:
+        px.line: The final line plot with predicted curve, max and current kudos labelled
+    """
 
     dist_plot = px.line(
         x=kudos_pred_df.loc[
@@ -118,6 +142,22 @@ def plot_elevation_prediction(
     elevation,
     achievements,
 ):
+    """Builds a figure showing the effect of ELEAVTION GAIN on kudos predictions, including
+    the point at which ELEVATION GAIN kudos are maximized and where the current inputs fall
+    on the curve.
+
+    Args:
+        kudos_pred_df (DataFrame): The pre-generated kudos predcitions dataframe
+        kudos_prediction (float): How many kudos are predicted.
+        num_followers (int): No. of followers selected.
+        custom_name_bool (int): 0 for stanfard ride name, 1 for custom ride name
+        distance (int): ride distance in km's
+        elevation (int): elevation gain on the ride in meters
+        achievements (int): No. of achievements
+
+    Returns:
+        px.line: The final line plot with predicted curve, max and current kudos labelled
+    """
 
     elevation_plot = px.line(
         x=kudos_pred_df.loc[
@@ -198,6 +238,22 @@ def plot_achievement_prediction(
     elevation,
     achievements,
 ):
+    """Builds a figure showing the effect of ACHIEVEMENT COUNT on kudos predictions, including
+    the point at which ACHIEVEMENT COUNT kudos are maximized and where the current inputs fall
+    on the curve.
+
+    Args:
+        kudos_pred_df (DataFrame): The pre-generated kudos predcitions dataframe
+        kudos_prediction (float): How many kudos are predicted.
+        num_followers (int): No. of followers selected.
+        custom_name_bool (int): 0 for stanfard ride name, 1 for custom ride name
+        distance (int): ride distance in km's
+        elevation (int): elevation gain on the ride in meters
+        achievements (int): No. of achievements
+
+    Returns:
+        px.line: The final line plot with predicted curve, max and current kudos labelled
+    """
 
     achievement_plot = px.line(
         x=kudos_pred_df.loc[
@@ -270,22 +326,23 @@ def plot_achievement_prediction(
 
 
 def plot_prediction_vs_actual_data(actual_kudos, pred_kudos):
+    """Displays a cross plot of data points of predicted vs. actual number of kudos for monitoring
+    the model.
 
-    # combined_data = pd.concat([train_data, test_data])
-    # combined_labels = pd.concat([train_labels, test_labels])
+    Args:
+        actual_kudos (list): Actual kudos count from Strava
+        pred_kudos (list): predcited kudos count from the model
+
+    Returns:
+        px.scatter: Plotly express scatter plot with diagonal line indicating "ideal" performance of the model
+                    for simpelr interpretation.
+    """
 
     x_min, x_max = (0, max(actual_kudos + pred_kudos) + 2)
     y_min, y_max = (0, max(actual_kudos + pred_kudos) + 2)
 
     kudo_pred_plot = px.scatter(
-        x=actual_kudos,
-        y=pred_kudos,
-        # color="#FFA400",
-        color_discrete_sequence=["#FFA400"]
-        # color_discrete_map={"unemployed": "#009FFD", "employed": "#FFA400"},
-        # labels={
-        #     "color": "Label",
-        # },
+        x=actual_kudos, y=pred_kudos, color_discrete_sequence=["#FFA400"]
     ).update_traces(marker=dict(size=10, line_width=2, line_color="black"))
 
     kudo_pred_plot.update_layout(
@@ -334,7 +391,7 @@ def plot_prediction_vs_actual_data(actual_kudos, pred_kudos):
         showarrow=False,
         font=dict(
             size=16,
-            ),
+        ),
     )
 
     return kudo_pred_plot

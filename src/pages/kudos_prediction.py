@@ -257,6 +257,22 @@ def update_predicted_kudos_number(
     _children,
     kudos_static_dict,
 ):
+    """Accepts changed features for predicting kudos and shows updated predicted kudos numbers along
+    with the optimization plots where max kudos can be gained.
+
+    Args:
+        num_followers (int): How many followers the user entered.
+        custom_name_bool (int): 0 for standard name, 1 for custom name
+        distance (int): distance in kilometers
+        elevation (int): elevation gain in meters
+        achievements (int): no. of achievements gained on the activity
+        _children (None): Placeholder for a div to trigger on page load instead of interaction.
+        kudos_static_dict (dict): the cached static kudos prediction data for fast reloading.
+
+    Returns:
+        figures: multiple figures are returned with updated data etc.
+        dict (dcc.Store): the updated cached data is returned so further interactions don't trigger a reload of the data.
+    """
 
     if kudos_static_dict is None:
         static_kudos_predictions = load_static_kudos_predictions(raw_kudos_data_date)
