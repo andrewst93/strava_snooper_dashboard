@@ -10,7 +10,7 @@ Strava Snooper Interactive Demo
 ```````````````````````````````
 Click here to visit the live demo website - `www.stravasnooper.com`_
 
-.. _www.stravasnooper.com: http://stravasnooper.com
+.. _www.stravasnooper.com: https://www.stravasnooper.com
 
 Project Modules
 ```````````````
