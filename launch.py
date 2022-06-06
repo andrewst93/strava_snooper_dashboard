@@ -20,6 +20,12 @@ from src.pages import (
     employment_prediction,
 )
 
+# check and update environment variables
+GCP_PROJECT = os.getenv("GCP_PROJECT")
+# for local development if GCP server not available
+if GCP_PROJECT == None:
+    os.environ["GCP_PROJECT"] = "stravasnooper-dev"
+
 url_bar_and_content_div = html.Div(
     [
         dcc.Location(id="url", refresh=False),
