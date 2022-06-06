@@ -1,6 +1,6 @@
 SHELL := /bin/bash
 
-GCP_PROJECT_ID := stravasnooper-dev
+# GCP_PROJECT_ID := stravasnooper-dev
 
 # help:
 #     @$(MAKE) -pRrq -f $(lastword $(MAKEFILE_LIST)) : 2>/dev/null | awk -v RS= -F: '/^# File/,/^# Finished Make data base/ {if ($$1 !~ "^[#.]") {print $$1}}' | sort | egrep -v -e '^[^[:alnum:]]' -e '^$@$$'
@@ -26,8 +26,13 @@ format:
 lint:
 	pylint --disable=R,C,W1203,E1101 ./app
 
-deploy:
-	gcloud builds submit --region=us-central1 --config cloudbuild.yaml .
+deploy-dev:
+	gcloud config set project stravasnooper-dev
+	gcloud builds submit --region=us-central1 --config cloudbuild.yaml --substitutions SHORT_SHA=dev
+
+deploy-prod:
+	gcloud config set project stavasnooper
+	gcloud builds submit --region=us-central1 --config cloudbuild.yaml --substitutions SHORT_SHA=prod
 
 docker-build:
 	docker build -t ssnoop-api:dev .
