@@ -24,12 +24,12 @@ def load_strava_activity_data_from_bq(users=["TyAndrews"]):
 
     start_time = time.time()
 
-    GCP_PROJECT = os.getenv("GCP_PROJECT")
+    GOOGLE_CLOUD_PROJECT = os.getenv("GOOGLE_CLOUD_PROJECT")
 
     processed_df = pd.DataFrame()
     for user in users:
 
-        bqclient = bigquery.Client(project=GCP_PROJECT)
+        bqclient = bigquery.Client(project=GOOGLE_CLOUD_PROJECT)
 
         strava_data_query = """
             SELECT 

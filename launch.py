@@ -21,10 +21,10 @@ from src.pages import (
 )
 
 # check and update environment variables
-GCP_PROJECT = os.getenv("GCP_PROJECT")
+GOOGLE_CLOUD_PROJECT = os.getenv("GOOGLE_CLOUD_PROJECT")
 # for local development if GCP server not available
-if GCP_PROJECT == None:
-    os.environ["GCP_PROJECT"] = "stravasnooper-dev"
+if GOOGLE_CLOUD_PROJECT == None:
+    os.environ["GOOGLE_CLOUD_PROJECT"] = "stravasnooper-dev"
 
 url_bar_and_content_div = html.Div(
     [
