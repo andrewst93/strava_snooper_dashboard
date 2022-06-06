@@ -1,0 +1,343 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>src.visualizations package &#8212; Strava Snooper 0.1 documentation</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/classic.css" />
+    
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">Strava Snooper 0.1 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">src.visualizations package</a></li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="src-visualizations-package">
+<h1>src.visualizations package<a class="headerlink" href="#src-visualizations-package" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-src.visualizations.employment_dash_plots">
+<span id="src-visualizations-employment-dash-plots-module"></span><h2>src.visualizations.employment_dash_plots module<a class="headerlink" href="#module-src.visualizations.employment_dash_plots" title="Permalink to this headline">¶</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="src.visualizations.employment_dash_plots.plot_eda_data">
+<span class="sig-prename descclassname"><span class="pre">src.visualizations.employment_dash_plots.</span></span><span class="sig-name descname"><span class="pre">plot_eda_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input_data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">year_range</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y_label</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">group_by</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#src.visualizations.employment_dash_plots.plot_eda_data" title="Permalink to this definition">¶</a></dt>
+<dd><p>Displays all the Strava data from multiple acivities and can be controlled through interactive controls
+in the dashboard and triggered through callbacks.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>input_data</strong> (<em>DataFrame</em>) – The Strava data to be selected from</p></li>
+<li><p><strong>year_range</strong> (<em>list</em>) – 1x2 list of start/end year to be plotted between</p></li>
+<li><p><strong>y_label</strong> (<em>str</em>) – which category to be plotted on the y-axis</p></li>
+<li><p><strong>group_by</strong> (<em>str</em>) – the time period by which to aggregate data (year, month day, etc.)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>The final stacked histogram of the Strava data.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>px.histogram</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="src.visualizations.employment_dash_plots.plot_lgbm_model_predictions">
+<span class="sig-prename descclassname"><span class="pre">src.visualizations.employment_dash_plots.</span></span><span class="sig-name descname"><span class="pre">plot_lgbm_model_predictions</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">train_data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">plot_data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">labels</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data_set</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lgbm_model</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#src.visualizations.employment_dash_plots.plot_lgbm_model_predictions" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generates the LGBM results plot using plotly express and prediction region mask.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>the LGBM model results plot including prediction region mask.</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>Plotly Express Figure</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="src.visualizations.employment_dash_plots.plot_logreg_model_predictions">
+<span class="sig-prename descclassname"><span class="pre">src.visualizations.employment_dash_plots.</span></span><span class="sig-name descname"><span class="pre">plot_logreg_model_predictions</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">labels</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data_set</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#src.visualizations.employment_dash_plots.plot_logreg_model_predictions" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generate the plotly express plot of the logisitc regression model results including prediction
+confidence mask values.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data</strong> (<em>DataFrame</em>) – dataset including months and working/not working info</p></li>
+<li><p><strong>labels</strong> (<em>list</em>) – classification labels to be displayed in the plots legend</p></li>
+<li><p><strong>data_set</strong> (<em>string</em>) – which dataset to pull for display.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>The final formatted plot ready for display.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>Plotly Express Figure</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="src.visualizations.employment_dash_plots.plot_training_data">
+<span class="sig-prename descclassname"><span class="pre">src.visualizations.employment_dash_plots.</span></span><span class="sig-name descname"><span class="pre">plot_training_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">train_data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">train_labels</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">test_data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">test_labels</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#src.visualizations.employment_dash_plots.plot_training_data" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generates a visualization of employment data by afternoon/morning work hours and whether
+employed or unemployed.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>train_data</strong> (<em>DataFrame</em>) – The morning/afternoon training data</p></li>
+<li><p><strong>train_labels</strong> (<em>Series</em>) – Labels for the train_data</p></li>
+<li><p><strong>test_data</strong> (<em>DataFrame</em>) – THe morning/afternoon test data</p></li>
+<li><p><strong>test_labels</strong> (<em>Series</em>) – Labels for the test_data</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Plotly figure showing the employed vs unemplyed data points by morning/afternoon activity instances.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>px.Scatter</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="src.visualizations.employment_dash_plots.plot_weekly_start_times">
+<span class="sig-prename descclassname"><span class="pre">src.visualizations.employment_dash_plots.</span></span><span class="sig-name descname"><span class="pre">plot_weekly_start_times</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">activity_df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">start_year</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">end_year</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">work_hours</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">title_descr</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#src.visualizations.employment_dash_plots.plot_weekly_start_times" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generate the plot of weekly start times by hour of day per year to observe trends
+between employed and unemployed years.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>activity_df</strong> (<em>DataFrame</em>) – The Strava activity data to generate from</p></li>
+<li><p><strong>start_year</strong> (<em>int</em>) – Year for which to start visualization, e.g. 2011</p></li>
+<li><p><strong>end_year</strong> (<em>int</em>) – Year for which to end visualization, e.g. 1993</p></li>
+<li><p><strong>work_hours</strong> (<em>list</em>) – 2x2 list of active work hours in 24hr time, e.g. [[9,11], [1,4]]</p></li>
+<li><p><strong>title_descr</strong> (<em>str</em>) – Title for the plot.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>The plotly figure ready to be displayed.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>go.Figure</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="module-src.visualizations.kudos_prediction_dash_plots">
+<span id="src-visualizations-kudos-prediction-dash-plots-module"></span><h2>src.visualizations.kudos_prediction_dash_plots module<a class="headerlink" href="#module-src.visualizations.kudos_prediction_dash_plots" title="Permalink to this headline">¶</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="src.visualizations.kudos_prediction_dash_plots.plot_achievement_prediction">
+<span class="sig-prename descclassname"><span class="pre">src.visualizations.kudos_prediction_dash_plots.</span></span><span class="sig-name descname"><span class="pre">plot_achievement_prediction</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">kudos_pred_df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">kudos_prediction</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_followers</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">custom_name_bool</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">distance</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">elevation</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">achievements</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#src.visualizations.kudos_prediction_dash_plots.plot_achievement_prediction" title="Permalink to this definition">¶</a></dt>
+<dd><p>Builds a figure showing the effect of ACHIEVEMENT COUNT on kudos predictions, including
+the point at which ACHIEVEMENT COUNT kudos are maximized and where the current inputs fall
+on the curve.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>kudos_pred_df</strong> (<em>DataFrame</em>) – The pre-generated kudos predcitions dataframe</p></li>
+<li><p><strong>kudos_prediction</strong> (<em>float</em>) – How many kudos are predicted.</p></li>
+<li><p><strong>num_followers</strong> (<em>int</em>) – No. of followers selected.</p></li>
+<li><p><strong>custom_name_bool</strong> (<em>int</em>) – 0 for stanfard ride name, 1 for custom ride name</p></li>
+<li><p><strong>distance</strong> (<em>int</em>) – ride distance in km’s</p></li>
+<li><p><strong>elevation</strong> (<em>int</em>) – elevation gain on the ride in meters</p></li>
+<li><p><strong>achievements</strong> (<em>int</em>) – No. of achievements</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>The final line plot with predicted curve, max and current kudos labelled</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>px.line</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="src.visualizations.kudos_prediction_dash_plots.plot_distance_prediction">
+<span class="sig-prename descclassname"><span class="pre">src.visualizations.kudos_prediction_dash_plots.</span></span><span class="sig-name descname"><span class="pre">plot_distance_prediction</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">kudos_pred_df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">kudos_prediction</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_followers</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">custom_name_bool</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">distance</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">elevation</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">achievements</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#src.visualizations.kudos_prediction_dash_plots.plot_distance_prediction" title="Permalink to this definition">¶</a></dt>
+<dd><p>Builds a figure showing the effect of DISTANCE on kudos predictions, including
+the point at which DISTANCE kudos are maximized and where the current inputs fall
+on the curve.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>kudos_pred_df</strong> (<em>DataFrame</em>) – The pre-generated kudos predcitions dataframe</p></li>
+<li><p><strong>kudos_prediction</strong> (<em>float</em>) – How many kudos are predicted.</p></li>
+<li><p><strong>num_followers</strong> (<em>int</em>) – No. of followers selected.</p></li>
+<li><p><strong>custom_name_bool</strong> (<em>int</em>) – 0 for stanfard ride name, 1 for custom ride name</p></li>
+<li><p><strong>distance</strong> (<em>int</em>) – ride distance in km’s</p></li>
+<li><p><strong>elevation</strong> (<em>int</em>) – elevation gain on the ride in meters</p></li>
+<li><p><strong>achievements</strong> (<em>int</em>) – No. of achievements</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>The final line plot with predicted curve, max and current kudos labelled</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>px.line</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="src.visualizations.kudos_prediction_dash_plots.plot_elevation_prediction">
+<span class="sig-prename descclassname"><span class="pre">src.visualizations.kudos_prediction_dash_plots.</span></span><span class="sig-name descname"><span class="pre">plot_elevation_prediction</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">kudos_pred_df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">kudos_prediction</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_followers</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">custom_name_bool</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">distance</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">elevation</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">achievements</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#src.visualizations.kudos_prediction_dash_plots.plot_elevation_prediction" title="Permalink to this definition">¶</a></dt>
+<dd><p>Builds a figure showing the effect of ELEAVTION GAIN on kudos predictions, including
+the point at which ELEVATION GAIN kudos are maximized and where the current inputs fall
+on the curve.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>kudos_pred_df</strong> (<em>DataFrame</em>) – The pre-generated kudos predcitions dataframe</p></li>
+<li><p><strong>kudos_prediction</strong> (<em>float</em>) – How many kudos are predicted.</p></li>
+<li><p><strong>num_followers</strong> (<em>int</em>) – No. of followers selected.</p></li>
+<li><p><strong>custom_name_bool</strong> (<em>int</em>) – 0 for stanfard ride name, 1 for custom ride name</p></li>
+<li><p><strong>distance</strong> (<em>int</em>) – ride distance in km’s</p></li>
+<li><p><strong>elevation</strong> (<em>int</em>) – elevation gain on the ride in meters</p></li>
+<li><p><strong>achievements</strong> (<em>int</em>) – No. of achievements</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>The final line plot with predicted curve, max and current kudos labelled</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>px.line</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="src.visualizations.kudos_prediction_dash_plots.plot_predicted_kudos_value">
+<span class="sig-prename descclassname"><span class="pre">src.visualizations.kudos_prediction_dash_plots.</span></span><span class="sig-name descname"><span class="pre">plot_predicted_kudos_value</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">kudos</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#src.visualizations.kudos_prediction_dash_plots.plot_predicted_kudos_value" title="Permalink to this definition">¶</a></dt>
+<dd><p>Visualizes a simple text and number of how many kudos were predicted.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>kudos</strong> (<em>int</em>) – No. of kudos</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>THe standalone figure with Predicted kudos and the number displayed.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>go.Figure</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="src.visualizations.kudos_prediction_dash_plots.plot_prediction_vs_actual_data">
+<span class="sig-prename descclassname"><span class="pre">src.visualizations.kudos_prediction_dash_plots.</span></span><span class="sig-name descname"><span class="pre">plot_prediction_vs_actual_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">actual_kudos</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pred_kudos</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#src.visualizations.kudos_prediction_dash_plots.plot_prediction_vs_actual_data" title="Permalink to this definition">¶</a></dt>
+<dd><p>Displays a cross plot of data points of predicted vs. actual number of kudos for monitoring
+the model.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>actual_kudos</strong> (<em>list</em>) – Actual kudos count from Strava</p></li>
+<li><p><strong>pred_kudos</strong> (<em>list</em>) – predcited kudos count from the model</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><dl class="simple">
+<dt>Plotly express scatter plot with diagonal line indicating “ideal” performance of the model</dt><dd><p>for simpelr interpretation.</p>
+</dd>
+</dl>
+</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>px.scatter</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="module-src.visualizations">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-src.visualizations" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <div>
+    <h3><a href="index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">src.visualizations package</a><ul>
+<li><a class="reference internal" href="#submodules">Submodules</a></li>
+<li><a class="reference internal" href="#module-src.visualizations.employment_dash_plots">src.visualizations.employment_dash_plots module</a></li>
+<li><a class="reference internal" href="#module-src.visualizations.kudos_prediction_dash_plots">src.visualizations.kudos_prediction_dash_plots module</a></li>
+<li><a class="reference internal" href="#module-src.visualizations">Module contents</a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/src.visualizations.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">Strava Snooper 0.1 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">src.visualizations package</a></li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright .
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.5.0.
+    </div>
+  </body>
+</html>

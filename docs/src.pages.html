@@ -1,0 +1,289 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>src.pages package &#8212; Strava Snooper 0.1 documentation</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/classic.css" />
+    
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">Strava Snooper 0.1 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">src.pages package</a></li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="src-pages-package">
+<h1>src.pages package<a class="headerlink" href="#src-pages-package" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-src.pages.employment_prediction">
+<span id="src-pages-employment-prediction-module"></span><h2>src.pages.employment_prediction module<a class="headerlink" href="#module-src.pages.employment_prediction" title="Permalink to this headline">¶</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="src.pages.employment_prediction.update_employment_page">
+<span class="sig-prename descclassname"><span class="pre">src.pages.employment_prediction.</span></span><span class="sig-name descname"><span class="pre">update_employment_page</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">_page_load</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">strava_dict</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">empl_dict</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#src.pages.employment_prediction.update_employment_page" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generates the pages on very first load from the unused page-load-div. Also
+initializes persistent cached data if it’s not already loaded by another page.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>_page_load</strong> (<em>None</em>) – Placeholder to trigger generation of plots on page load with loading symbols</p></li>
+<li><p><strong>strava_dict</strong> (<em>dict</em>) – The cached strava data if already loaded, can be None if not loaded by another page already.</p></li>
+<li><p><strong>empl_dict</strong> (<em>dict</em>) – The static employment data that can be used by multiple pages for faster loading of pages.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>multiple primary figures are returned for the employment prediction page.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>Plotly Figures</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="module-src.pages.homepage">
+<span id="src-pages-homepage-module"></span><h2>src.pages.homepage module<a class="headerlink" href="#module-src.pages.homepage" title="Permalink to this headline">¶</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="src.pages.homepage.initial_page_load">
+<span class="sig-prename descclassname"><span class="pre">src.pages.homepage.</span></span><span class="sig-name descname"><span class="pre">initial_page_load</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">_page_load</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">strava_dict</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">empl_dict</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">kudos_dict</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#src.pages.homepage.initial_page_load" title="Permalink to this definition">¶</a></dt>
+<dd><p>Loads initial data for supporting visuals and caches re-used data. Updates
+the blank placeholder plots so loading symbols work as expected and the page can load before data is
+loaded.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>_page_load</strong> (<em>None</em>) – placeholder input for on initial page-load the callback is triggered</p></li>
+<li><p><strong>strava_dict</strong> (<em>dict</em>) – Strava data stored in the dcc.Store component for reuse.</p></li>
+<li><p><strong>empl_dict</strong> (<em>dict</em>) – employment data for employment info and for re-use on other pages.</p></li>
+<li><p><strong>kudos_dict</strong> (<em>dict</em>) – Actual vs predicted kudos data to be shared between pages.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>outputs the primary data stores for re-use in dict form.
+Figures: multiple output figures for display on initial page load.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>data</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="src.pages.homepage.strava_eda_update">
+<span class="sig-prename descclassname"><span class="pre">src.pages.homepage.</span></span><span class="sig-name descname"><span class="pre">strava_eda_update</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">y_label</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">year_range</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">group_by</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">strava_dict</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#src.pages.homepage.strava_eda_update" title="Permalink to this definition">¶</a></dt>
+<dd><p>Updates the EDA plot of Strava data on interaction, also if the cached Strava data is updated, like
+on initial page load this should trigger and update the blank placeholder plot right away.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>y_label</strong> (<em>string</em>) – the data field from strava data to plot on y-axis</p></li>
+<li><p><strong>year_range</strong> (<em>list</em>) – start/end year of data to be plotted.</p></li>
+<li><p><strong>group_by</strong> (<em>str</em>) – what time period (week, day, month) to group activity info by</p></li>
+<li><p><strong>strava_dict</strong> (<em>dict</em>) – the cached strava data</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>the Strava activity eda figure.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>figure</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="module-src.pages.kudos_prediction">
+<span id="src-pages-kudos-prediction-module"></span><h2>src.pages.kudos_prediction module<a class="headerlink" href="#module-src.pages.kudos_prediction" title="Permalink to this headline">¶</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="src.pages.kudos_prediction.update_predicted_kudos_number">
+<span class="sig-prename descclassname"><span class="pre">src.pages.kudos_prediction.</span></span><span class="sig-name descname"><span class="pre">update_predicted_kudos_number</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">num_followers</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">custom_name_bool</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">distance</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">elevation</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">achievements</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">_children</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">kudos_static_dict</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#src.pages.kudos_prediction.update_predicted_kudos_number" title="Permalink to this definition">¶</a></dt>
+<dd><p>Accepts changed features for predicting kudos and shows updated predicted kudos numbers along
+with the optimization plots where max kudos can be gained.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>num_followers</strong> (<em>int</em>) – How many followers the user entered.</p></li>
+<li><p><strong>custom_name_bool</strong> (<em>int</em>) – 0 for standard name, 1 for custom name</p></li>
+<li><p><strong>distance</strong> (<em>int</em>) – distance in kilometers</p></li>
+<li><p><strong>elevation</strong> (<em>int</em>) – elevation gain in meters</p></li>
+<li><p><strong>achievements</strong> (<em>int</em>) – no. of achievements gained on the activity</p></li>
+<li><p><strong>_children</strong> (<em>None</em>) – Placeholder for a div to trigger on page load instead of interaction.</p></li>
+<li><p><strong>kudos_static_dict</strong> (<em>dict</em>) – the cached static kudos prediction data for fast reloading.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>multiple figures are returned with updated data etc.
+dict (dcc.Store): the updated cached data is returned so further interactions don’t trigger a reload of the data.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>figures</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="module-src.pages.layouts">
+<span id="src-pages-layouts-module"></span><h2>src.pages.layouts module<a class="headerlink" href="#module-src.pages.layouts" title="Permalink to this headline">¶</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="src.pages.layouts.blank_placeholder_plot">
+<span class="sig-prename descclassname"><span class="pre">src.pages.layouts.</span></span><span class="sig-name descname"><span class="pre">blank_placeholder_plot</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">background_color</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'white'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#src.pages.layouts.blank_placeholder_plot" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creates an empty plot to be used on page load before callbacks complete,
+allows page load and all figure updates/data loading to be managed in callbacks
+without empty plots being shown.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>background_color</strong> (<em>str</em><em>, </em><em>optional</em>) – What color the background should match to be “invisible” until updated.
+Defaults to “white”.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Empty plot with lines removed and formatting updated to be blank.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>px.Scatter</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="src.pages.layouts.footer">
+<span class="sig-prename descclassname"><span class="pre">src.pages.layouts.</span></span><span class="sig-name descname"><span class="pre">footer</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#src.pages.layouts.footer" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="src.pages.layouts.header">
+<span class="sig-prename descclassname"><span class="pre">src.pages.layouts.</span></span><span class="sig-name descname"><span class="pre">header</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#src.pages.layouts.header" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="src.pages.layouts.toggle_navbar_collapse">
+<span class="sig-prename descclassname"><span class="pre">src.pages.layouts.</span></span><span class="sig-name descname"><span class="pre">toggle_navbar_collapse</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">n</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">is_open</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#src.pages.layouts.toggle_navbar_collapse" title="Permalink to this definition">¶</a></dt>
+<dd><p>Manages collapsible navbar on small screens.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>n</strong> (<em>int</em>) – Number of clicks on the menu</p></li>
+<li><p><strong>is_open</strong> (<em>bool</em>) – State of whether the menu is open or closed</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>updates the state of the navbar to open/close it</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="src.pages.layouts.toggle_popover">
+<span class="sig-prename descclassname"><span class="pre">src.pages.layouts.</span></span><span class="sig-name descname"><span class="pre">toggle_popover</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">n</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">is_open</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#src.pages.layouts.toggle_popover" title="Permalink to this definition">¶</a></dt>
+<dd><p>Allows for Contact Me pop over to be open/closed on page.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>n</strong> (<em>int</em>) – how many times the pop has been clicked</p></li>
+<li><p><strong>is_open</strong> (<em>bool</em>) – Whether the popover is open or closed</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Changes the is_open state to the opposite to open/close the pop over.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="module-src.pages">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-src.pages" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <div>
+    <h3><a href="index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">src.pages package</a><ul>
+<li><a class="reference internal" href="#submodules">Submodules</a></li>
+<li><a class="reference internal" href="#module-src.pages.employment_prediction">src.pages.employment_prediction module</a></li>
+<li><a class="reference internal" href="#module-src.pages.homepage">src.pages.homepage module</a></li>
+<li><a class="reference internal" href="#module-src.pages.kudos_prediction">src.pages.kudos_prediction module</a></li>
+<li><a class="reference internal" href="#module-src.pages.layouts">src.pages.layouts module</a></li>
+<li><a class="reference internal" href="#module-src.pages">Module contents</a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/src.pages.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">Strava Snooper 0.1 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">src.pages package</a></li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright .
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.5.0.
+    </div>
+  </body>
+</html>

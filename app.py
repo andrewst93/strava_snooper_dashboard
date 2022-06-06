@@ -14,6 +14,9 @@ app = dash.Dash(
     external_stylesheets=[dbc.themes.UNITED],
     meta_tags=[{"name": "viewport", "content": "width=device-width, initial-scale=1"}],
 )  # dbc.themes.UNITED
+app.config.suppress_callback_exceptions = True
 app.title = "Strava Snooper"
 server = app.server
-app.config.suppress_callback_exceptions = True
+
+if __name__ == "__main__":
+    pass

@@ -1,11 +1,37 @@
-import dash_core_components as dcc
-import dash_html_components as html
+from dash import dcc
+from dash import html
 from dash.dependencies import Input, Output, State
+import plotly.express as px
 import dash_bootstrap_components as dbc
 
 from app import app
 
 STRAVASNOOPER_LOGO = "/assets/images/strava_snooper_wide_logo.png"
+
+
+def blank_placeholder_plot(background_color="white"):
+    """Creates an empty plot to be used on page load before callbacks complete,
+    allows page load and all figure updates/data loading to be managed in callbacks
+    without empty plots being shown.
+
+    Args:
+        background_color (str, optional): What color the background should match to be "invisible" until updated.
+                                         Defaults to "white".
+
+    Returns:
+        px.Scatter : Empty plot with lines removed and formatting updated to be blank.
+    """
+
+    blank_plot = px.scatter(x=[0, 1], y=[0, 1])
+    blank_plot.update_xaxes(showgrid=False, showticklabels=False, visible=False)
+    blank_plot.update_yaxes(showgrid=False, showticklabels=False, visible=False)
+
+    blank_plot.update_traces(marker=dict(color=background_color))
+
+    blank_plot.layout.plot_bgcolor = background_color
+    blank_plot.layout.paper_bgcolor = background_color
+    return blank_plot
+
 
 # # a contact me button with email, website, github etc.
 contact_button = dbc.Button(
@@ -132,13 +158,21 @@ def header():
                         ),
                         dbc.NavItem(
                             dbc.NavLink(
+                                "Employment Prediction",
+                                active="exact",
+                                href="/pages/employment-prediction",
+                                style={"text-decoration": "none", "font-weight": 700},
+                            )
+                        ),
+                        dbc.NavItem(
+                            dbc.NavLink(
                                 "Predict Your Kudos",
                                 active="exact",
                                 href="/pages/kudos-prediction",
                                 style={"text-decoration": "none", "font-weight": 700},
                             )
                         ),
-                        dbc.NavItem(ty_website_link),
+                        # dbc.NavItem(ty_website_link),
                         dbc.NavItem(contact_button),
                         contact_popover,
                     ],
@@ -164,6 +198,15 @@ def header():
     [State(f"popover-bottom", "is_open")],
 )  # (toggle_popover)
 def toggle_popover(n, is_open):
+    """Allows for Contact Me pop over to be open/closed on page.
+
+    Args:
+        n (int): how many times the pop has been clicked
+        is_open (bool): Whether the popover is open or closed
+
+    Returns:
+        bool: Changes the is_open state to the opposite to open/close the pop over.
+    """
     if n:
         return not is_open
     return is_open
@@ -175,6 +218,15 @@ def toggle_popover(n, is_open):
     [State("navbar-collapse", "is_open")],
 )
 def toggle_navbar_collapse(n, is_open):
+    """Manages collapsible navbar on small screens.
+
+    Args:
+        n (int): Number of clicks on the menu
+        is_open (bool): State of whether the menu is open or closed
+
+    Returns:
+        bool: updates the state of the navbar to open/close it
+    """
     if n:
         return not is_open
     return is_open
