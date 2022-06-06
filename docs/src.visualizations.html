@@ -1,51 +1,91 @@
-
 <!DOCTYPE html>
-
-<html>
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>src.visualizations package &#8212; Strava Snooper 0.1 documentation</title>
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="_static/classic.css" />
-    
-    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-    <script src="_static/jquery.js"></script>
-    <script src="_static/underscore.js"></script>
-    <script src="_static/doctools.js"></script>
-    
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>src.visualizations package &mdash; Strava Snooper 0.1 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+    <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
-    <link rel="search" title="Search" href="search.html" /> 
-  </head><body>
-    <div class="related" role="navigation" aria-label="related navigation">
-      <h3>Navigation</h3>
-      <ul>
-        <li class="right" style="margin-right: 10px">
-          <a href="genindex.html" title="General Index"
-             accesskey="I">index</a></li>
-        <li class="right" >
-          <a href="py-modindex.html" title="Python Module Index"
-             >modules</a> |</li>
-        <li class="nav-item nav-item-0"><a href="index.html">Strava Snooper 0.1 documentation</a> &#187;</li>
-        <li class="nav-item nav-item-this"><a href="">src.visualizations package</a></li> 
-      </ul>
-    </div>  
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="src.pages package" href="src.pages.html" />
+    <link rel="prev" title="src.models package" href="src.models.html" /> 
+</head>
 
-    <div class="document">
-      <div class="documentwrapper">
-        <div class="bodywrapper">
-          <div class="body" role="main">
-            
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> Strava Snooper
+          </a>
+              <div class="version">
+                0.1
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="src.data.html">src.data package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="src.models.html">src.models package</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">src.visualizations package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-src.visualizations.employment_dash_plots">src.visualizations.employment_dash_plots module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-src.visualizations.kudos_prediction_dash_plots">src.visualizations.kudos_prediction_dash_plots module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-src.visualizations">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="src.pages.html">src.pages package</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Strava Snooper</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>src.visualizations package</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/src.visualizations.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
   <div class="section" id="src-visualizations-package">
-<h1>src.visualizations package<a class="headerlink" href="#src-visualizations-package" title="Permalink to this headline">¶</a></h1>
+<h1>src.visualizations package<a class="headerlink" href="#src-visualizations-package" title="Permalink to this headline"></a></h1>
 <div class="section" id="submodules">
-<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline"></a></h2>
 </div>
 <div class="section" id="module-src.visualizations.employment_dash_plots">
-<span id="src-visualizations-employment-dash-plots-module"></span><h2>src.visualizations.employment_dash_plots module<a class="headerlink" href="#module-src.visualizations.employment_dash_plots" title="Permalink to this headline">¶</a></h2>
+<span id="src-visualizations-employment-dash-plots-module"></span><h2>src.visualizations.employment_dash_plots module<a class="headerlink" href="#module-src.visualizations.employment_dash_plots" title="Permalink to this headline"></a></h2>
 <dl class="py function">
 <dt class="sig sig-object py" id="src.visualizations.employment_dash_plots.plot_eda_data">
-<span class="sig-prename descclassname"><span class="pre">src.visualizations.employment_dash_plots.</span></span><span class="sig-name descname"><span class="pre">plot_eda_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input_data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">year_range</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y_label</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">group_by</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#src.visualizations.employment_dash_plots.plot_eda_data" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">src.visualizations.employment_dash_plots.</span></span><span class="sig-name descname"><span class="pre">plot_eda_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input_data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">year_range</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y_label</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">group_by</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#src.visualizations.employment_dash_plots.plot_eda_data" title="Permalink to this definition"></a></dt>
 <dd><p>Displays all the Strava data from multiple acivities and can be controlled through interactive controls
 in the dashboard and triggered through callbacks.</p>
 <dl class="field-list simple">
@@ -68,7 +108,7 @@ in the dashboard and triggered through callbacks.</p>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="src.visualizations.employment_dash_plots.plot_lgbm_model_predictions">
-<span class="sig-prename descclassname"><span class="pre">src.visualizations.employment_dash_plots.</span></span><span class="sig-name descname"><span class="pre">plot_lgbm_model_predictions</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">train_data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">plot_data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">labels</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data_set</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lgbm_model</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#src.visualizations.employment_dash_plots.plot_lgbm_model_predictions" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">src.visualizations.employment_dash_plots.</span></span><span class="sig-name descname"><span class="pre">plot_lgbm_model_predictions</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">train_data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">plot_data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">labels</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data_set</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lgbm_model</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#src.visualizations.employment_dash_plots.plot_lgbm_model_predictions" title="Permalink to this definition"></a></dt>
 <dd><p>Generates the LGBM results plot using plotly express and prediction region mask.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
@@ -82,7 +122,7 @@ in the dashboard and triggered through callbacks.</p>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="src.visualizations.employment_dash_plots.plot_logreg_model_predictions">
-<span class="sig-prename descclassname"><span class="pre">src.visualizations.employment_dash_plots.</span></span><span class="sig-name descname"><span class="pre">plot_logreg_model_predictions</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">labels</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data_set</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#src.visualizations.employment_dash_plots.plot_logreg_model_predictions" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">src.visualizations.employment_dash_plots.</span></span><span class="sig-name descname"><span class="pre">plot_logreg_model_predictions</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">labels</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data_set</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#src.visualizations.employment_dash_plots.plot_logreg_model_predictions" title="Permalink to this definition"></a></dt>
 <dd><p>Generate the plotly express plot of the logisitc regression model results including prediction
 confidence mask values.</p>
 <dl class="field-list simple">
@@ -104,7 +144,7 @@ confidence mask values.</p>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="src.visualizations.employment_dash_plots.plot_training_data">
-<span class="sig-prename descclassname"><span class="pre">src.visualizations.employment_dash_plots.</span></span><span class="sig-name descname"><span class="pre">plot_training_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">train_data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">train_labels</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">test_data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">test_labels</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#src.visualizations.employment_dash_plots.plot_training_data" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">src.visualizations.employment_dash_plots.</span></span><span class="sig-name descname"><span class="pre">plot_training_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">train_data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">train_labels</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">test_data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">test_labels</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#src.visualizations.employment_dash_plots.plot_training_data" title="Permalink to this definition"></a></dt>
 <dd><p>Generates a visualization of employment data by afternoon/morning work hours and whether
 employed or unemployed.</p>
 <dl class="field-list simple">
@@ -127,7 +167,7 @@ employed or unemployed.</p>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="src.visualizations.employment_dash_plots.plot_weekly_start_times">
-<span class="sig-prename descclassname"><span class="pre">src.visualizations.employment_dash_plots.</span></span><span class="sig-name descname"><span class="pre">plot_weekly_start_times</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">activity_df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">start_year</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">end_year</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">work_hours</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">title_descr</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#src.visualizations.employment_dash_plots.plot_weekly_start_times" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">src.visualizations.employment_dash_plots.</span></span><span class="sig-name descname"><span class="pre">plot_weekly_start_times</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">activity_df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">start_year</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">end_year</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">work_hours</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">title_descr</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#src.visualizations.employment_dash_plots.plot_weekly_start_times" title="Permalink to this definition"></a></dt>
 <dd><p>Generate the plot of weekly start times by hour of day per year to observe trends
 between employed and unemployed years.</p>
 <dl class="field-list simple">
@@ -151,10 +191,10 @@ between employed and unemployed years.</p>
 
 </div>
 <div class="section" id="module-src.visualizations.kudos_prediction_dash_plots">
-<span id="src-visualizations-kudos-prediction-dash-plots-module"></span><h2>src.visualizations.kudos_prediction_dash_plots module<a class="headerlink" href="#module-src.visualizations.kudos_prediction_dash_plots" title="Permalink to this headline">¶</a></h2>
+<span id="src-visualizations-kudos-prediction-dash-plots-module"></span><h2>src.visualizations.kudos_prediction_dash_plots module<a class="headerlink" href="#module-src.visualizations.kudos_prediction_dash_plots" title="Permalink to this headline"></a></h2>
 <dl class="py function">
 <dt class="sig sig-object py" id="src.visualizations.kudos_prediction_dash_plots.plot_achievement_prediction">
-<span class="sig-prename descclassname"><span class="pre">src.visualizations.kudos_prediction_dash_plots.</span></span><span class="sig-name descname"><span class="pre">plot_achievement_prediction</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">kudos_pred_df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">kudos_prediction</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_followers</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">custom_name_bool</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">distance</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">elevation</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">achievements</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#src.visualizations.kudos_prediction_dash_plots.plot_achievement_prediction" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">src.visualizations.kudos_prediction_dash_plots.</span></span><span class="sig-name descname"><span class="pre">plot_achievement_prediction</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">kudos_pred_df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">kudos_prediction</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_followers</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">custom_name_bool</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">distance</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">elevation</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">achievements</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#src.visualizations.kudos_prediction_dash_plots.plot_achievement_prediction" title="Permalink to this definition"></a></dt>
 <dd><p>Builds a figure showing the effect of ACHIEVEMENT COUNT on kudos predictions, including
 the point at which ACHIEVEMENT COUNT kudos are maximized and where the current inputs fall
 on the curve.</p>
@@ -181,7 +221,7 @@ on the curve.</p>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="src.visualizations.kudos_prediction_dash_plots.plot_distance_prediction">
-<span class="sig-prename descclassname"><span class="pre">src.visualizations.kudos_prediction_dash_plots.</span></span><span class="sig-name descname"><span class="pre">plot_distance_prediction</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">kudos_pred_df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">kudos_prediction</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_followers</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">custom_name_bool</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">distance</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">elevation</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">achievements</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#src.visualizations.kudos_prediction_dash_plots.plot_distance_prediction" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">src.visualizations.kudos_prediction_dash_plots.</span></span><span class="sig-name descname"><span class="pre">plot_distance_prediction</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">kudos_pred_df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">kudos_prediction</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_followers</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">custom_name_bool</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">distance</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">elevation</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">achievements</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#src.visualizations.kudos_prediction_dash_plots.plot_distance_prediction" title="Permalink to this definition"></a></dt>
 <dd><p>Builds a figure showing the effect of DISTANCE on kudos predictions, including
 the point at which DISTANCE kudos are maximized and where the current inputs fall
 on the curve.</p>
@@ -208,7 +248,7 @@ on the curve.</p>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="src.visualizations.kudos_prediction_dash_plots.plot_elevation_prediction">
-<span class="sig-prename descclassname"><span class="pre">src.visualizations.kudos_prediction_dash_plots.</span></span><span class="sig-name descname"><span class="pre">plot_elevation_prediction</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">kudos_pred_df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">kudos_prediction</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_followers</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">custom_name_bool</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">distance</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">elevation</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">achievements</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#src.visualizations.kudos_prediction_dash_plots.plot_elevation_prediction" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">src.visualizations.kudos_prediction_dash_plots.</span></span><span class="sig-name descname"><span class="pre">plot_elevation_prediction</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">kudos_pred_df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">kudos_prediction</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_followers</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">custom_name_bool</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">distance</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">elevation</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">achievements</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#src.visualizations.kudos_prediction_dash_plots.plot_elevation_prediction" title="Permalink to this definition"></a></dt>
 <dd><p>Builds a figure showing the effect of ELEAVTION GAIN on kudos predictions, including
 the point at which ELEVATION GAIN kudos are maximized and where the current inputs fall
 on the curve.</p>
@@ -235,7 +275,7 @@ on the curve.</p>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="src.visualizations.kudos_prediction_dash_plots.plot_predicted_kudos_value">
-<span class="sig-prename descclassname"><span class="pre">src.visualizations.kudos_prediction_dash_plots.</span></span><span class="sig-name descname"><span class="pre">plot_predicted_kudos_value</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">kudos</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#src.visualizations.kudos_prediction_dash_plots.plot_predicted_kudos_value" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">src.visualizations.kudos_prediction_dash_plots.</span></span><span class="sig-name descname"><span class="pre">plot_predicted_kudos_value</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">kudos</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#src.visualizations.kudos_prediction_dash_plots.plot_predicted_kudos_value" title="Permalink to this definition"></a></dt>
 <dd><p>Visualizes a simple text and number of how many kudos were predicted.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -252,7 +292,7 @@ on the curve.</p>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="src.visualizations.kudos_prediction_dash_plots.plot_prediction_vs_actual_data">
-<span class="sig-prename descclassname"><span class="pre">src.visualizations.kudos_prediction_dash_plots.</span></span><span class="sig-name descname"><span class="pre">plot_prediction_vs_actual_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">actual_kudos</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pred_kudos</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#src.visualizations.kudos_prediction_dash_plots.plot_prediction_vs_actual_data" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">src.visualizations.kudos_prediction_dash_plots.</span></span><span class="sig-name descname"><span class="pre">plot_prediction_vs_actual_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">actual_kudos</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pred_kudos</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#src.visualizations.kudos_prediction_dash_plots.plot_prediction_vs_actual_data" title="Permalink to this definition"></a></dt>
 <dd><p>Displays a cross plot of data points of predicted vs. actual number of kudos for monitoring
 the model.</p>
 <dl class="field-list simple">
@@ -277,67 +317,39 @@ the model.</p>
 
 </div>
 <div class="section" id="module-src.visualizations">
-<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-src.visualizations" title="Permalink to this headline">¶</a></h2>
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-src.visualizations" title="Permalink to this headline"></a></h2>
 </div>
 </div>
 
 
-            <div class="clearer"></div>
+           </div>
           </div>
-        </div>
-      </div>
-      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
-        <div class="sphinxsidebarwrapper">
-  <div>
-    <h3><a href="index.html">Table of Contents</a></h3>
-    <ul>
-<li><a class="reference internal" href="#">src.visualizations package</a><ul>
-<li><a class="reference internal" href="#submodules">Submodules</a></li>
-<li><a class="reference internal" href="#module-src.visualizations.employment_dash_plots">src.visualizations.employment_dash_plots module</a></li>
-<li><a class="reference internal" href="#module-src.visualizations.kudos_prediction_dash_plots">src.visualizations.kudos_prediction_dash_plots module</a></li>
-<li><a class="reference internal" href="#module-src.visualizations">Module contents</a></li>
-</ul>
-</li>
-</ul>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="src.models.html" class="btn btn-neutral float-left" title="src.models package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="src.pages.html" class="btn btn-neutral float-right" title="src.pages package" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
 
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright .</p>
   </div>
-  <div role="note" aria-label="source link">
-    <h3>This Page</h3>
-    <ul class="this-page-menu">
-      <li><a href="_sources/src.visualizations.rst.txt"
-            rel="nofollow">Show Source</a></li>
-    </ul>
-   </div>
-<div id="searchbox" style="display: none" role="search">
-  <h3 id="searchlabel">Quick search</h3>
-    <div class="searchformwrapper">
-    <form class="search" action="search.html" method="get">
-      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
-      <input type="submit" value="Go" />
-    </form>
-    </div>
-</div>
-<script>$('#searchbox').show(0);</script>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
         </div>
       </div>
-      <div class="clearer"></div>
-    </div>
-    <div class="related" role="navigation" aria-label="related navigation">
-      <h3>Navigation</h3>
-      <ul>
-        <li class="right" style="margin-right: 10px">
-          <a href="genindex.html" title="General Index"
-             >index</a></li>
-        <li class="right" >
-          <a href="py-modindex.html" title="Python Module Index"
-             >modules</a> |</li>
-        <li class="nav-item nav-item-0"><a href="index.html">Strava Snooper 0.1 documentation</a> &#187;</li>
-        <li class="nav-item nav-item-this"><a href="">src.visualizations package</a></li> 
-      </ul>
-    </div>
-    <div class="footer" role="contentinfo">
-        &#169; Copyright .
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.5.0.
-    </div>
-  </body>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
 </html>
