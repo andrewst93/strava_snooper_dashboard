@@ -1,0 +1,453 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>src.data package &#8212; Strava Snooper 0.1 documentation</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/classic.css" />
+    
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">Strava Snooper 0.1 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">src.data package</a></li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="src-data-package">
+<h1>src.data package<a class="headerlink" href="#src-data-package" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-src.data.gcp_strava_data_load_preprocess">
+<span id="src-data-gcp-strava-data-load-preprocess-module"></span><h2>src.data.gcp_strava_data_load_preprocess module<a class="headerlink" href="#module-src.data.gcp_strava_data_load_preprocess" title="Permalink to this headline">¶</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="src.data.gcp_strava_data_load_preprocess.generate_employment_prediction_model_data">
+<span class="sig-prename descclassname"><span class="pre">src.data.gcp_strava_data_load_preprocess.</span></span><span class="sig-name descname"><span class="pre">generate_employment_prediction_model_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">activity_df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">start_year</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">end_year</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">start_month</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">end_month</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">label</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#src.data.gcp_strava_data_load_preprocess.generate_employment_prediction_model_data" title="Permalink to this definition">¶</a></dt>
+<dd><p>Used to generate month by month data of activities per hour of the day, both in terms of percentage
+of activites started at each hour/day of the week, as well as raw counts of activities per hour  of the
+day for training the employment prediction models.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>activity_df</strong> (<em>DataFrame</em>) – The pre-processed Strava activity data frame.</p></li>
+<li><p><strong>start_year</strong> (<em>int</em>) – Year in which to start processing data.</p></li>
+<li><p><strong>end_year</strong> (<em>int</em>) – YEar in which to stop processing data from Strava data.</p></li>
+<li><p><strong>start_month</strong> (<em>int</em>) – Month for which to start processing Strava data.</p></li>
+<li><p><strong>end_month</strong> (<em>int</em>) – Month for which to end processing of strava data in end_year</p></li>
+<li><p><strong>label</strong> (<em>int</em>) – 0 for unemployed, 1 for employed</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>indexed by year, month, day of week, hour and how many activities were started then
+train_data (list): activities by hour of day 0-23, then label, year, month.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>summary_data (dict)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="src.data.gcp_strava_data_load_preprocess.generate_weekly_start_time_dict">
+<span class="sig-prename descclassname"><span class="pre">src.data.gcp_strava_data_load_preprocess.</span></span><span class="sig-name descname"><span class="pre">generate_weekly_start_time_dict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">activity_df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">year</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#src.data.gcp_strava_data_load_preprocess.generate_weekly_start_time_dict" title="Permalink to this definition">¶</a></dt>
+<dd><p>Builds data object of how many activities were started per hour of the day in a given year.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>activity_df</strong> (<em>DataFrame</em>) – Processed strava dataframe</p></li>
+<li><p><strong>year</strong> (<em>int</em>) – the year for which to generate the time of day activity summaries</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Indexed by day of week (0-6) and hour of day (0-23) gives count of activities during that time.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="src.data.gcp_strava_data_load_preprocess.load_employment_model_data">
+<span class="sig-prename descclassname"><span class="pre">src.data.gcp_strava_data_load_preprocess.</span></span><span class="sig-name descname"><span class="pre">load_employment_model_data</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#src.data.gcp_strava_data_load_preprocess.load_employment_model_data" title="Permalink to this definition">¶</a></dt>
+<dd><p>Loads the pre-generated employment model data for use in the dashboard.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Tuple, training employment data first, then test employment data</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>DataFrame</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="src.data.gcp_strava_data_load_preprocess.load_lgbm_heatmap">
+<span class="sig-prename descclassname"><span class="pre">src.data.gcp_strava_data_load_preprocess.</span></span><span class="sig-name descname"><span class="pre">load_lgbm_heatmap</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data_set</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#src.data.gcp_strava_data_load_preprocess.load_lgbm_heatmap" title="Permalink to this definition">¶</a></dt>
+<dd><p>Load heatmap of confidence values of empl. vs. un-empl. time based on perc.
+of activities started during morning/afternoon work hours.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>data_set</strong> (<em>str</em>) – “test” or “train” dataset heat maps.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><dl class="simple">
+<dt>LGBM heat map values of form - index, X, Y, Z, where Z is prediction confidence</dt><dd><p>for heat map, X/Y are morning/aft work hours activities started</p>
+</dd>
+</dl>
+</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>DataFrame</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="src.data.gcp_strava_data_load_preprocess.load_lgbm_model">
+<span class="sig-prename descclassname"><span class="pre">src.data.gcp_strava_data_load_preprocess.</span></span><span class="sig-name descname"><span class="pre">load_lgbm_model</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model_file_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'lgbm_employment_classifier.txt'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#src.data.gcp_strava_data_load_preprocess.load_lgbm_model" title="Permalink to this definition">¶</a></dt>
+<dd><p>To use the lgbm employment classifier model first load with lgbm package.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>model_file_name</strong> (<em>str</em><em>, </em><em>optional</em>) – Model name in models. Defaults to “lgbm_employment_classifier.txt”.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>LGBM Booster model</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>lgbm.Booster</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="src.data.gcp_strava_data_load_preprocess.load_lgbm_model_results">
+<span class="sig-prename descclassname"><span class="pre">src.data.gcp_strava_data_load_preprocess.</span></span><span class="sig-name descname"><span class="pre">load_lgbm_model_results</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data_set</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#src.data.gcp_strava_data_load_preprocess.load_lgbm_model_results" title="Permalink to this definition">¶</a></dt>
+<dd><p>Load static lgbm model employment predictions for faster dashboard loading performance.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>data_set</strong> (<em>str</em>) – “test” or “train” dataset to load.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Employment LGBM model predictions - index, prediction, label e.g. 12,1,0</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>DataFrame</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="src.data.gcp_strava_data_load_preprocess.load_logreg_heatmap">
+<span class="sig-prename descclassname"><span class="pre">src.data.gcp_strava_data_load_preprocess.</span></span><span class="sig-name descname"><span class="pre">load_logreg_heatmap</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data_set</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#src.data.gcp_strava_data_load_preprocess.load_logreg_heatmap" title="Permalink to this definition">¶</a></dt>
+<dd><p>Load heatmap of confidence values of empl. vs. un-empl. time based on perc.
+of activities started during morning/afternoon work hours.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>data_set</strong> (<em>str</em>) – “test” or “train” dataset heat maps.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><dl class="simple">
+<dt>Logisitic Regression heat map values of form - index, X, Y, Z, where Z is prediction confidence</dt><dd><p>for heat map, X/Y are percentage of activities started during morning/aft work hours activities</p>
+</dd>
+</dl>
+</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>DataFrame</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="src.data.gcp_strava_data_load_preprocess.load_logreg_model">
+<span class="sig-prename descclassname"><span class="pre">src.data.gcp_strava_data_load_preprocess.</span></span><span class="sig-name descname"><span class="pre">load_logreg_model</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model_file_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'logreg_employment_model.pkl'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#src.data.gcp_strava_data_load_preprocess.load_logreg_model" title="Permalink to this definition">¶</a></dt>
+<dd><p>Load to SK learn object the pickled employment prediction logistic regression model.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>model_file_name</strong> (<em>str</em><em>, </em><em>optional</em>) – Name of model file in models folder. Defaults to “logreg_employment_model.pkl”.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>SKlearn logistic regression model instance.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>LogisticRegression</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="src.data.gcp_strava_data_load_preprocess.load_logreg_model_results">
+<span class="sig-prename descclassname"><span class="pre">src.data.gcp_strava_data_load_preprocess.</span></span><span class="sig-name descname"><span class="pre">load_logreg_model_results</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data_set</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#src.data.gcp_strava_data_load_preprocess.load_logreg_model_results" title="Permalink to this definition">¶</a></dt>
+<dd><p>Load static model employment predictions for faster dashboard loading performance.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>data_set</strong> (<em>str</em>) – “test” or “train” dataset to load.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Employment logistic regression model predictions - index, prediction, label e.g. 12,1,0</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>DataFrame</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="src.data.gcp_strava_data_load_preprocess.load_strava_activity_data_from_bq">
+<span class="sig-prename descclassname"><span class="pre">src.data.gcp_strava_data_load_preprocess.</span></span><span class="sig-name descname"><span class="pre">load_strava_activity_data_from_bq</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">users</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">['TyAndrews']</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#src.data.gcp_strava_data_load_preprocess.load_strava_activity_data_from_bq" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets the Strava data from Bigquery for single or multiple users in dataframe format.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>users</strong> (<em>list</em><em>, </em><em>optional</em>) – The users for which to load Strava data from Bigquery. Defaults to [“TyAndrews”].</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>All users data in a single dataframe with the column “name” to denote between users.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>DataFrame</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="src.data.gcp_strava_data_load_preprocess.load_week_start_times_data">
+<span class="sig-prename descclassname"><span class="pre">src.data.gcp_strava_data_load_preprocess.</span></span><span class="sig-name descname"><span class="pre">load_week_start_times_data</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#src.data.gcp_strava_data_load_preprocess.load_week_start_times_data" title="Permalink to this definition">¶</a></dt>
+<dd><p>To display differences in start times between full years of employed vs. not employed
+the static data is loaded.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Yearly data with activities by day of week 0-6 and hours of the day 0-23.</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>DataFrame</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="src.data.gcp_strava_data_load_preprocess.preprocess_employment_model_data">
+<span class="sig-prename descclassname"><span class="pre">src.data.gcp_strava_data_load_preprocess.</span></span><span class="sig-name descname"><span class="pre">preprocess_employment_model_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input_data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">work_hours</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#src.data.gcp_strava_data_load_preprocess.preprocess_employment_model_data" title="Permalink to this definition">¶</a></dt>
+<dd><p>Breaks out hourly percentage of activities started and uses the currently set work hours
+to return breakdown of morning vs. afternoon activities.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>input_data</strong> (<em>DataFrame</em>) – Raw data with 0-23 columns for each hour of the day, label, year and month columns.</p></li>
+<li><p><strong>work_hours</strong> (<em>List</em>) – A list of two windows for morning/aft work hours, e.g. [[9, 11], [13, 16]]</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Tuple of the processed dataframe with new columns, and the labels corresponding to the data.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>DataFrame, Series</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="src.data.gcp_strava_data_load_preprocess.preprocess_strava_df">
+<span class="sig-prename descclassname"><span class="pre">src.data.gcp_strava_data_load_preprocess.</span></span><span class="sig-name descname"><span class="pre">preprocess_strava_df</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">raw_df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">min_act_length</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1200</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_act_dist</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">400</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">export</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#src.data.gcp_strava_data_load_preprocess.preprocess_strava_df" title="Permalink to this definition">¶</a></dt>
+<dd><p>Processes the raw BigQuery data and manages feature additions, scaling etc. for use in the dashboard.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>raw_df</strong> (<em>DataFrame</em>) – The extracted data from BigQuery</p></li>
+<li><p><strong>min_act_length</strong> (<em>int</em><em>, </em><em>optional</em>) – THe shortest activity to include in the results in seconds. Defaults to 1200 (20min).</p></li>
+<li><p><strong>max_act_dist</strong> (<em>int</em><em>, </em><em>optional</em>) – Longest activity allowed to catch data issues/outliers, in km . Defaults to 400.</p></li>
+<li><p><strong>export</strong> (<em>bool</em><em>, </em><em>optional</em>) – Used to export the processed df to CSV for local work/offline prototyping. Defaults to False.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>The cleaned and processed data with additional features etc. added.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>DataFrame</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="module-src.data.kudos_data_load">
+<span id="src-data-kudos-data-load-module"></span><h2>src.data.kudos_data_load module<a class="headerlink" href="#module-src.data.kudos_data_load" title="Permalink to this headline">¶</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="src.data.kudos_data_load.load_static_kudos_predictions">
+<span class="sig-prename descclassname"><span class="pre">src.data.kudos_data_load.</span></span><span class="sig-name descname"><span class="pre">load_static_kudos_predictions</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">date_string</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#src.data.kudos_data_load.load_static_kudos_predictions" title="Permalink to this definition">¶</a></dt>
+<dd><p>Imports the pre-generated kudos predictions used for the interactive visualizations/selectors
+of the kudos prediction dashboard.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>date_string</strong> (<em>str</em>) – The data of the most up to data static data file in data/kudos-prediction</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>the imported DataFrame containing the predictions byt features at pre-generated steps.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>DataFrame</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="module-src.data.strava_data_ETL">
+<span id="src-data-strava-data-etl-module"></span><h2>src.data.strava_data_ETL module<a class="headerlink" href="#module-src.data.strava_data_ETL" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-src.data.strava_data_load_preprocess">
+<span id="src-data-strava-data-load-preprocess-module"></span><h2>src.data.strava_data_load_preprocess module<a class="headerlink" href="#module-src.data.strava_data_load_preprocess" title="Permalink to this headline">¶</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="src.data.strava_data_load_preprocess.generate_employment_prediction_model_data">
+<span class="sig-prename descclassname"><span class="pre">src.data.strava_data_load_preprocess.</span></span><span class="sig-name descname"><span class="pre">generate_employment_prediction_model_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">activity_df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">start_year</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">end_year</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">start_month</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">end_month</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">label</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#src.data.strava_data_load_preprocess.generate_employment_prediction_model_data" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="src.data.strava_data_load_preprocess.generate_weekly_start_time_dict">
+<span class="sig-prename descclassname"><span class="pre">src.data.strava_data_load_preprocess.</span></span><span class="sig-name descname"><span class="pre">generate_weekly_start_time_dict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">activity_df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">year</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#src.data.strava_data_load_preprocess.generate_weekly_start_time_dict" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="src.data.strava_data_load_preprocess.load_employment_model_data">
+<span class="sig-prename descclassname"><span class="pre">src.data.strava_data_load_preprocess.</span></span><span class="sig-name descname"><span class="pre">load_employment_model_data</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#src.data.strava_data_load_preprocess.load_employment_model_data" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="src.data.strava_data_load_preprocess.load_lgbm_heatmap">
+<span class="sig-prename descclassname"><span class="pre">src.data.strava_data_load_preprocess.</span></span><span class="sig-name descname"><span class="pre">load_lgbm_heatmap</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data_set</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#src.data.strava_data_load_preprocess.load_lgbm_heatmap" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="src.data.strava_data_load_preprocess.load_lgbm_model">
+<span class="sig-prename descclassname"><span class="pre">src.data.strava_data_load_preprocess.</span></span><span class="sig-name descname"><span class="pre">load_lgbm_model</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model_file_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'lgbm_employment_classifier.txt'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#src.data.strava_data_load_preprocess.load_lgbm_model" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="src.data.strava_data_load_preprocess.load_lgbm_model_results">
+<span class="sig-prename descclassname"><span class="pre">src.data.strava_data_load_preprocess.</span></span><span class="sig-name descname"><span class="pre">load_lgbm_model_results</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data_set</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#src.data.strava_data_load_preprocess.load_lgbm_model_results" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="src.data.strava_data_load_preprocess.load_logreg_heatmap">
+<span class="sig-prename descclassname"><span class="pre">src.data.strava_data_load_preprocess.</span></span><span class="sig-name descname"><span class="pre">load_logreg_heatmap</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data_set</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#src.data.strava_data_load_preprocess.load_logreg_heatmap" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="src.data.strava_data_load_preprocess.load_logreg_model">
+<span class="sig-prename descclassname"><span class="pre">src.data.strava_data_load_preprocess.</span></span><span class="sig-name descname"><span class="pre">load_logreg_model</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model_file_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'logreg_employment_model.pkl'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#src.data.strava_data_load_preprocess.load_logreg_model" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="src.data.strava_data_load_preprocess.load_logreg_model_results">
+<span class="sig-prename descclassname"><span class="pre">src.data.strava_data_load_preprocess.</span></span><span class="sig-name descname"><span class="pre">load_logreg_model_results</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data_set</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#src.data.strava_data_load_preprocess.load_logreg_model_results" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="src.data.strava_data_load_preprocess.load_strava_activity_data">
+<span class="sig-prename descclassname"><span class="pre">src.data.strava_data_load_preprocess.</span></span><span class="sig-name descname"><span class="pre">load_strava_activity_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data_file_path</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#src.data.strava_data_load_preprocess.load_strava_activity_data" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="src.data.strava_data_load_preprocess.load_week_start_times_data">
+<span class="sig-prename descclassname"><span class="pre">src.data.strava_data_load_preprocess.</span></span><span class="sig-name descname"><span class="pre">load_week_start_times_data</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#src.data.strava_data_load_preprocess.load_week_start_times_data" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="src.data.strava_data_load_preprocess.preprocess_employment_model_data">
+<span class="sig-prename descclassname"><span class="pre">src.data.strava_data_load_preprocess.</span></span><span class="sig-name descname"><span class="pre">preprocess_employment_model_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input_data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">work_hours</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#src.data.strava_data_load_preprocess.preprocess_employment_model_data" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="src.data.strava_data_load_preprocess.preprocess_strava_df">
+<span class="sig-prename descclassname"><span class="pre">src.data.strava_data_load_preprocess.</span></span><span class="sig-name descname"><span class="pre">preprocess_strava_df</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">raw_df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">min_act_length</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1200</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_act_dist</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">400</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">export</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#src.data.strava_data_load_preprocess.preprocess_strava_df" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+<div class="section" id="module-src.data">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-src.data" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <div>
+    <h3><a href="index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">src.data package</a><ul>
+<li><a class="reference internal" href="#submodules">Submodules</a></li>
+<li><a class="reference internal" href="#module-src.data.gcp_strava_data_load_preprocess">src.data.gcp_strava_data_load_preprocess module</a></li>
+<li><a class="reference internal" href="#module-src.data.kudos_data_load">src.data.kudos_data_load module</a></li>
+<li><a class="reference internal" href="#module-src.data.strava_data_ETL">src.data.strava_data_ETL module</a></li>
+<li><a class="reference internal" href="#module-src.data.strava_data_load_preprocess">src.data.strava_data_load_preprocess module</a></li>
+<li><a class="reference internal" href="#module-src.data">Module contents</a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/src.data.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">Strava Snooper 0.1 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">src.data package</a></li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright .
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.5.0.
+    </div>
+  </body>
+</html>
