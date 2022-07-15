@@ -1,0 +1,36 @@
+name: stravasnooper
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - pandas
+  - plotly
+  - dash-core-components
+  - flask
+  - scikit-learn
+  - numpy
+  - lightgbm
+  - dash-bootstrap-components
+  - ipykernel
+  - python-dotenv
+  - requests
+  - pip
+  - seaborn
+  - ipywidgets
+  - ipympl
+  - shap
+  - matplotlib
+  - xgboost
+  - python=3.7
+  - pyarrow
+  - libprotobuf
+  - proto-plus
+  - db-dtypes
+  - black
+  - mlflow=1.11.0
+  - dash-html-components
+  - sphinx
+  - sphinxcontrib-napoleon
+  - sphinx_rtd_theme
+  - pyqt5-sip
+prefix: C:\Users\andrewt02\.conda\envs\stravasnooper
