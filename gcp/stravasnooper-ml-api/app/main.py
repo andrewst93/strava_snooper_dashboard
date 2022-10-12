@@ -63,7 +63,7 @@ async def predict_kudos(
         default=None, ge=0, le=60, description="No. of achievements on the ride."
     ),
     elevation: List[int] = Query(
-        default=None, ge=0, le=3000, description="Elevation gain in m's."
+        default=None, ge=0, le=5000, description="Elevation gain in m's."
     ),
     followers: int = Query(
         default=None, ge=10, le=100000, description="Current number of followers."
